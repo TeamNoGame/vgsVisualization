@@ -1,5 +1,5 @@
 *.iml
-.idea
+.idea/
 out/
 .DS_Store
 node_modules

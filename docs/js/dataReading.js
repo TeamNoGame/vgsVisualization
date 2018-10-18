@@ -4,6 +4,16 @@ function readFiles() {
     vgsData = txt;
   }).done(function () {
     vgsData = dataCleaning(vgsData);
+    for (var i = 0; i < vgsData.length; i++) {
+      var row = vgsData[i];
+      row['Rank'] = parseInt(row['Rank']);
+      row['Year'] = parseInt(row['Year']);
+      row['NA_Sales'] = parseFloat(row['NA_Sales']);
+      row['EU_Sales'] = parseFloat(row['EU_Sales']);
+      row['JP_Sales'] = parseFloat(row['JP_Sales']);
+      row['Other_Sales'] = parseFloat(row['Other_Sales']);
+      row['Global_Sales'] = parseFloat(row['Global_Sales']);
+    }
     doneLoadingData();
   });
 }

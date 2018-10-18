@@ -115,8 +115,25 @@
     });
     console.log(vgsData);
     var rank = [], name = [], platform = [], year = [], genre = [], publisher = [], NAsales = [], EUsales = [], JPsales = [], otherSales = [], globalSales = [];
+    // yearly sales
+    var yearlyNA = [], yearlyEU = [], yearlyJP = [], yearlyOther = [], yearlyGlobal = [];
+    // for x: year traces
+    var flatYears =[];
+    for (var i = 1980; i <= 2020; i++){
+      flatYears.push(i);
+    }
+    // parse stuff
     for (var i = 0; i < vgsData.length; i++) {
       var row = vgsData[i];
+      row['Rank'] = parseInt(row['Rank']);
+      row['Year'] = parseInt(row['Year']);
+      row['NA_Sales'] = parseFloat(row['NA_Sales']);
+      row['EU_Sales'] = parseFloat(row['EU_Sales']);
+      row['JP_Sales'] = parseFloat(row['JP_Sales']);
+      row['Other_Sales'] = parseFloat(row['Other_Sales']);
+      row['"Global_Sales"'] = parseFloat(row['"Global_Sales"']);
+      /*
+      // give every column its own array
       rank.push(row['Rank']);
       name.push(row['Name']);
       platform.push(row['Platform']);
@@ -128,37 +145,51 @@
       JPsales.push(row['JP_Sales']);
       otherSales.push(row['Other_Sales']);
       globalSales.push(row['"Global_Sales"']);
+      // sum sales by region and year
+      yearlyNA[parseInt(row['Year'])-1980] += parseFloat(row['NA_Sales']);
+      yearlyEU[parseInt(row['Year'])-1980] += parseFloat(row['EU_Sales']);
+      yearlyJP[parseInt(row['Year'])-1980] += parseFloat(row['JP_Sales']);
+      yearlyOther[parseInt(row['Year'])-1980] += parseFloat(row['Other_Sales']);
+      yearlyGlobal[parseInt(row['Year'])-1980] += parseFloat(row['"Global_Sales"']);
+      */
     }
-    buildGraph1();
+
+    console.log(vgsData);
+
+    //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
+
+    //console.log(rank, name, platform, year, genre, publisher, NAsales, EUsales, JPsales, otherSales, globalSales);
+
+    buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
   }
 
-  function buildGraph1(year, NAsales, EUsales, JPsales, otherSales, globalSales){
+  function buildGraph1(flatYears, NAsales, EUsales, JPsales, otherSales, globalSales){
     var NAtrace = {
-      x: year,
+      x: flatYears,
       y: NAsales,
       name: 'NA Sales',
       type: 'bar'
     };
     var EUtrace = {
-      x: year,
+      x: flatYears,
       y: EUsales,
       name: 'EU Sales',
       type: 'bar'
     };
     var JPtrace = {
-      x: year,
+      x: flatYears,
       y: JPsales,
       name: 'JP Sales',
       type: 'bar'
     };
     var otherTrace = {
-      x: year,
+      x: flatYears,
       y: otherSales,
       name: 'Other Sales',
       type: 'bar'
     };
     var globalTrace = {
-      x: year,
+      x: flatYears,
       y: globalSales,
       name: 'Global Sales',
       type: 'bar'

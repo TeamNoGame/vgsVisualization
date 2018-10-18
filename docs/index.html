@@ -52,10 +52,12 @@
         <dt class="timeline-event start-open" id="event01"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event01EX">
           <p>Content about the event goes here...</p>
+          <div id='graph1'></div>
         </dd>
         <dt class="timeline-event start-open" id="event02"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event02EX">
           <p>Content about the other event...</p>
+          <div id="graph2"></div>
         </dd>
       </dl>
     </div>
@@ -111,6 +113,58 @@
     $(document).ready(function() {
       $.timeliner({});
     });
+    console.log(vgsData);
+    var rank = [], name = [], platform = [], year = [], genre = [], publisher = [], NAsales = [], EUsales = [], JPsales = [], otherSales = [], globalSales = [];
+    for (var i = 0; i < vgsData.length; i++) {
+      var row = vgsData[i];
+      rank.push(row['Rank']);
+      name.push(row['Name']);
+      platform.push(row['Platform']);
+      year.push(row['Year']);
+      genre.push(row['Genre']);
+      publisher.push(row['Publisher']);
+      NAsales.push(row['NA_Sales']);
+      EUsales.push(row['EU_Sales']);
+      JPsales.push(row['JP_Sales']);
+      otherSales.push(row['Other_Sales']);
+      globalSales.push(row['"Global_Sales"']);
+    }
+    buildGraph1();
+  }
+
+  function buildGraph1(year, NAsales, EUsales, JPsales, otherSales, globalSales){
+    var NAtrace = {
+      x: year,
+      y: NAsales,
+      name: 'NA Sales',
+      type: 'bar'
+    };
+    var EUtrace = {
+      x: year,
+      y: EUsales,
+      name: 'EU Sales',
+      type: 'bar'
+    };
+    var JPtrace = {
+      x: year,
+      y: JPsales,
+      name: 'JP Sales',
+      type: 'bar'
+    };
+    var otherTrace = {
+      x: year,
+      y: otherSales,
+      name: 'Other Sales',
+      type: 'bar'
+    };
+    var globalTrace = {
+      x: year,
+      y: globalSales,
+      name: 'Global Sales',
+      type: 'bar'
+    };
+    var data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
+    Plotly.newPlot('graph1', data, {barmode: 'group'})
   }
 </script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -15,6 +15,7 @@ function readFiles() {
       row['Global_Sales'] = parseFloat(row['Global_Sales']);
     }
     doneLoadingData();
+    makeTraces();
   });
 }
 

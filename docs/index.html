@@ -110,7 +110,6 @@
 <script>
   function doneLoadingData() {
     // Instantiate the timeline --> jQuery.
-    console.log(vgsData);
     $(document).ready(function() {
       $.timeliner({});
     });
@@ -124,15 +123,9 @@
       flatYears.push(i);
     }
     // parse stuff
+
     for (var i = 0; i < vgsData.length; i++) {
       var row = vgsData[i];
-      row['Rank'] = parseInt(row['Rank']);
-      row['Year'] = parseInt(row['Year']);
-      row['NA_Sales'] = parseFloat(row['NA_Sales']);
-      row['EU_Sales'] = parseFloat(row['EU_Sales']);
-      row['JP_Sales'] = parseFloat(row['JP_Sales']);
-      row['Other_Sales'] = parseFloat(row['Other_Sales']);
-      row['"Global_Sales"'] = parseFloat(row['"Global_Sales"']);
       /*
       // give every column its own array
       rank.push(row['Rank']);
@@ -146,16 +139,15 @@
       JPsales.push(row['JP_Sales']);
       otherSales.push(row['Other_Sales']);
       globalSales.push(row['"Global_Sales"']);
+
       // sum sales by region and year
-      yearlyNA[parseInt(row['Year'])-1980] += parseFloat(row['NA_Sales']);
-      yearlyEU[parseInt(row['Year'])-1980] += parseFloat(row['EU_Sales']);
-      yearlyJP[parseInt(row['Year'])-1980] += parseFloat(row['JP_Sales']);
-      yearlyOther[parseInt(row['Year'])-1980] += parseFloat(row['Other_Sales']);
-      yearlyGlobal[parseInt(row['Year'])-1980] += parseFloat(row['"Global_Sales"']);
+      yearlyNA[row['Year']] += row['NA_Sales'];
+      yearlyEU[row['Year']] += row['EU_Sales'];
+      yearlyJP[row['Year']] += row['JP_Sales'];
+      yearlyOther[row['Year']] += row['Other_Sales'];
+      yearlyGlobal[row['Year']] += row['Global_Sales'];
       */
     }
-
-    console.log(vgsData);
 
     //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
 

@@ -49,11 +49,11 @@
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1980</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event start-open" id="event01"><a>Event</a></dt>
+        <dt class="timeline-event" id="event01"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event01EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event start-open" id="event02"><a>Another Event</a></dt>
+        <dt class="timeline-event" id="event02"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event02EX">
           <p>Content about the other event...</p>
         </dd>
@@ -63,11 +63,11 @@
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1981</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event start-open" id="event03"><a>Event</a></dt>
+        <dt class="timeline-event" id="event03"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event03EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event start-open" id="event04"><a>Another Event</a></dt>
+        <dt class="timeline-event" id="event04"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event04EX">
           <p>Content about the other event...</p>
         </dd>
@@ -77,11 +77,11 @@
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1982</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event start-open" id="event05"><a>Event</a></dt>
+        <dt class="timeline-event" id="event05"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event05EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event start-open" id="event06"><a>Another Event</a></dt>
+        <dt class="timeline-event" id="event06"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event06EX">
           <p>Content about the other event...</p>
         </dd>
@@ -91,12 +91,82 @@
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1983</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event start-open" id="event07"><a>Event</a></dt>
+        <dt class="timeline-event" id="event07"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event07EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event start-open" id="event08"><a>Another Event</a></dt>
+        <dt class="timeline-event" id="event08"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event08EX">
+          <p>Content about the other event...</p>
+        </dd>
+      </dl>
+    </div>
+    <br class="clear">
+    <div class="timeline-wrapper">
+      <h2 class="timeline-time">1983</h2>
+      <dl class="timeline-series">
+        <dt class="timeline-event" id="event09"><a>Event</a></dt>
+        <dd class="timeline-event-content" id="event09EX">
+          <p>Content about the event goes here...</p>
+        </dd>
+        <dt class="timeline-event" id="event10"><a>Another Event</a></dt>
+        <dd class="timeline-event-content" id="event10EX">
+          <p>Content about the other event...</p>
+        </dd>
+      </dl>
+    </div>
+    <br class="clear">
+    <div class="timeline-wrapper">
+      <h2 class="timeline-time">1983</h2>
+      <dl class="timeline-series">
+        <dt class="timeline-event" id="event11"><a>Event</a></dt>
+        <dd class="timeline-event-content" id="event11EX">
+          <p>Content about the event goes here...</p>
+        </dd>
+        <dt class="timeline-event" id="event12"><a>Another Event</a></dt>
+        <dd class="timeline-event-content" id="event12EX">
+          <p>Content about the other event...</p>
+        </dd>
+      </dl>
+    </div>
+    <br class="clear">
+    <div class="timeline-wrapper">
+      <h2 class="timeline-time">1983</h2>
+      <dl class="timeline-series">
+        <dt class="timeline-event" id="event13"><a>Event</a></dt>
+        <dd class="timeline-event-content" id="event13EX">
+          <p>Content about the event goes here...</p>
+        </dd>
+        <dt class="timeline-event" id="event14"><a>Another Event</a></dt>
+        <dd class="timeline-event-content" id="event14EX">
+          <p>Content about the other event...</p>
+        </dd>
+      </dl>
+    </div>
+    <br class="clear">
+    <div class="timeline-wrapper">
+      <h2 class="timeline-time">1983</h2>
+      <dl class="timeline-series">
+        <dt class="timeline-event" id="event15"><a>Event</a></dt>
+        <dd class="timeline-event-content" id="event15EX">
+          <p>Content about the event goes here...</p>
+        </dd>
+        <dt class="timeline-event" id="event16"><a>Another Event</a></dt>
+        <dd class="timeline-event-content" id="event16EX">
+          <p>Content about the other event...</p>
+        </dd>
+      </dl>
+    </div>
+    <br class="clear">
+    <div class="timeline-wrapper">
+      <h2 class="timeline-time">1983</h2>
+      <dl class="timeline-series">
+        <dt class="timeline-event" id="event17"><a>Event</a></dt>
+        <dd class="timeline-event-content" id="event17EX">
+          <p>Content about the event goes here...</p>
+        </dd>
+        <dt class="timeline-event" id="event18"><a>Another Event</a></dt>
+        <dd class="timeline-event-content" id="event18EX">
           <p>Content about the other event...</p>
         </dd>
       </dl>
@@ -105,13 +175,12 @@
   </div>
 </div>
 <script src="js/dataReading.js"></script>
+
 <script type="text/javascript">
   function doneLoadingData() {
     // Instantiate the timeline --> jQuery.
-    console.log(vgsData);
-    $(document).ready(function() {
-      $.timeliner({});
-    });
+    // console.log(vgsData);
+    $.timeliner({});
   }
 </script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -119,7 +188,7 @@
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/timeliner.min.js"></script>
+<script type="text/javascript" src="js/timeliner.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>

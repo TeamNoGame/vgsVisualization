@@ -1,25 +1,24 @@
 function makeTraces() {
   console.log(vgsData);
-  var rank = [], name = [], platform = [], year = [], genre = [], publisher = [], NAsales = [], EUsales = [],
+  let rank = [], name = [], platform = [], year = [], genre = [], publisher = [], NAsales = [], EUsales = [],
       JPsales = [], otherSales = [], globalSales = [];
 // yearly sales
-  var yearlyNA = [], yearlyEU = [], yearlyJP = [], yearlyOther = [], yearlyGlobal = [];
+  let yearlyNA = [], yearlyEU = [], yearlyJP = [], yearlyOther = [], yearlyGlobal = [];
 // for x: year traces
-  var flatYears = [];
-  for (var i = 1980; i <= 2020; i++) {
-    flatYears.push({
-      year: i,
-      NAsales: 0,
-      EUsales: 0,
-      JPsales: 0,
-      otherSales: 0,
-      globalSales: 0
-    });
+  let flatYears = [];
+  for (let i = 1980; i <= 2020; i++) {
+    flatYears.push(i);
+    yearlyNA.push(0);
+    yearlyJP.push(0);
+    yearlyEU.push(0);
+    yearlyOther.push(0);
+    yearlyGlobal.push(0);
+
   }
 
-// parse stuff
-  for (var i = 0; i < vgsData.length; i++) {
-    var row = vgsData[i];
+  // parse stuff
+  for (let i = 0; i < vgsData.length; i++) {
+    const row = vgsData[i];
     /*
     // give every column its own array
     rank.push(row['Rank']);
@@ -32,7 +31,7 @@ function makeTraces() {
     EUsales.push(row['EU_Sales']);
     JPsales.push(row['JP_Sales']);
     otherSales.push(row['Other_Sales']);
-    globalSales.push(row['"Global_Sales"']);
+    globalSales.push(row['Global_Sales']);
 
     // sum sales by region and year
     yearlyNA[row['Year']] += row['NA_Sales'];
@@ -41,8 +40,14 @@ function makeTraces() {
     yearlyOther[row['Year']] += row['Other_Sales'];
     yearlyGlobal[row['Year']] += row['Global_Sales'];
     */
-
+    yearlyNA[row['Year'] - 1980] += row['NA_Sales'];
+    yearlyEU[row['Year'] - 1980] += row['EU_Sales'];
+    yearlyJP[row['Year'] - 1980] += row['JP_Sales'];
+    yearlyOther[row['Year'] - 1980] += row['Other_Sales'];
+    yearlyGlobal[row['Year'] - 1980] += row['Global_Sales'];
   }
+
+  console.log(flatYears);
 
 //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
 
@@ -51,37 +56,38 @@ function makeTraces() {
   buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
 }
 
-function buildGraph1(flatYears, NAsales, EUsales, JPsales, otherSales, globalSales) {
-  var NAtrace = {
+function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal) {
+  const NAtrace = {
     x: flatYears,
-    y: NAsales,
+    y: yearlyNA,
     name: 'NA Sales',
     type: 'bar'
   };
-  var EUtrace = {
+  const EUtrace = {
     x: flatYears,
-    y: EUsales,
+    y: yearlyEU,
     name: 'EU Sales',
     type: 'bar'
   };
-  var JPtrace = {
+  const JPtrace = {
     x: flatYears,
-    y: JPsales,
+    y: yearlyJP,
     name: 'JP Sales',
     type: 'bar'
   };
-  var otherTrace = {
+  const otherTrace = {
     x: flatYears,
-    y: otherSales,
+    y: yearlyOther,
     name: 'Other Sales',
     type: 'bar'
   };
-  var globalTrace = {
+  const globalTrace = {
     x: flatYears,
-    y: globalSales,
+    y: yearlyGlobal,
     name: 'Global Sales',
     type: 'bar'
   };
-  var data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
+  const data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
+  console.log(data);
   Plotly.newPlot('graph1', data, { barmode: 'group' });
 }

@@ -2,9 +2,9 @@ function makeTraces() {
   console.log(vgsData);
   let rank = [], name = [], platform = [], year = [], genre = [], publisher = [], NAsales = [], EUsales = [],
       JPsales = [], otherSales = [], globalSales = [];
-// yearly sales
+// yearly sales (graph1)
   let yearlyNA = [], yearlyEU = [], yearlyJP = [], yearlyOther = [], yearlyGlobal = [];
-// for x: year traces
+// for x: year traces (graph1)
   let flatYears = [];
   for (let i = 1980; i <= 2020; i++) {
     flatYears.push(i);
@@ -14,6 +14,16 @@ function makeTraces() {
     yearlyOther.push(0);
     yearlyGlobal.push(0);
 
+  }
+
+  // sales by genre
+  let genreNA = [], genreEU = [], genreJP = [], genreOther = [], genreGlobal = [];
+  for(let i = 0; i<16; i++){
+    genreNA.push(0);
+    genreEU.push(0);
+    genreJP.push(0);
+    genreOther.push(0);
+    genreGlobal.push(0);
   }
 
   // parse stuff
@@ -40,6 +50,21 @@ function makeTraces() {
     yearlyOther[row['Year']] += row['Other_Sales'];
     yearlyGlobal[row['Year']] += row['Global_Sales'];
     */
+    // find all unique platforms
+    if(!platform.includes(row['Platform'])) platform.push(row['Platform']);
+    // find all unique genres
+    if(!genre.includes(row['Genre'])) genre.push(row['Genre']);
+    // find all unique publishers
+    if(!publisher.includes(row['Publisher'])) publisher.push(row['Publisher']);
+
+    // make arrays for sales by genre by region
+    genreNA[genre.indexOf(row['Genre'])] += row['NA_Sales'];
+    genreEU[genre.indexOf(row['Genre'])] += row['EU_Sales'];
+    genreJP[genre.indexOf(row['Genre'])] += row['JP_Sales'];
+    genreOther[genre.indexOf(row['Genre'])] += row['Other_Sales'];
+    genreGlobal[genre.indexOf(row['Genre'])] += row['Global_Sales'];
+
+    // make arrays for sales by year by region
     yearlyNA[row['Year'] - 1980] += row['NA_Sales'];
     yearlyEU[row['Year'] - 1980] += row['EU_Sales'];
     yearlyJP[row['Year'] - 1980] += row['JP_Sales'];
@@ -47,7 +72,12 @@ function makeTraces() {
     yearlyGlobal[row['Year'] - 1980] += row['Global_Sales'];
   }
 
+  platform.sort();
+  //genre.sort();
+  publisher.sort();
+  console.log(platform, genre, publisher);
   console.log(flatYears);
+  console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
 
 //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
 
@@ -89,5 +119,9 @@ function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearl
   };
   const data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
   console.log(data);
-  Plotly.newPlot('graph1', data, { barmode: 'group' });
+  Plotly.newPlot('graph1', data, { barmode: 'group', title: 'Sales by Release Date by Region in Millions'});
+}
+
+function buildGraph2(genre, genreNA, genreEU, genreJP, genreOther, genreGlobal){
+
 }

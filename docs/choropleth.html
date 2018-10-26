@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet GeoJSON Example</title>
+    <meta charset="utf-8" />
+    <!-- Leaflet -->
+		<!--<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>-->
+    <!--<style type="text/css">-->
+        <!--.leaflet-container{background-color:#c5e8ff;}-->
+    <!--</style>-->
+
+    <!-- Datamaps -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="js/datamaps.world.min.js"></script>
+</head>
+
+<body>
+    <!-- Datamaps -->
+    <div id="datamap" style="width: 1200px; height: 800px"></div>
+    <script src="js/datamap.js"></script>
+
+    <!-- Leaflet -->
+    <!--<div id="map" style="width: 600px; height: 400px"></div>-->
+
+		<!--<script>-->
+		<!--var mapboxAccessToken = "pk.eyJ1IjoibWdhb2lyYW4iLCJhIjoiY2ptOHR4NG16NHdheTN3b2d4NWdhN2NncyJ9.iIKQo9rOsblZHW3DlkkqoA";-->
+		<!--var map = L.map('map').setView([37.8, -96], 4);-->
+
+		<!--L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {-->
+		    <!--id: 'mapbox.light',-->
+		    <!--attribution: 'attribution'-->
+		<!--}).addTo(map);-->
+
+		<!--L.geoJson(europeData).addTo(map);-->
+		<!--</script>-->
+
+		<!-- geoJSON example -->
+		<!--<script-->
+		    <!--src="https://code.jquery.com/jquery-3.3.1.js"-->
+		    <!--integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="-->
+		    <!--crossorigin="anonymous"></script>-->
+	  <!--<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"-->
+	          <!--integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="-->
+	          <!--crossorigin=""></script>-->
+    <!--<script>-->
+        <!--var myGeoJSONPath = 'data/europe.geo.json';-->
+        <!--var myCustomStyle = {-->
+            <!--stroke: false,-->
+            <!--fill: true,-->
+            <!--fillColor: '#fff',-->
+            <!--fillOpacity: 1-->
+        <!--}-->
+        <!--$.getJSON(myGeoJSONPath,function(data){-->
+            <!--var map = L.map('map').setView([39.74739, -105], 4);-->
+
+            <!--L.geoJson(data, {-->
+                <!--clickable: false,-->
+                <!--style: myCustomStyle-->
+            <!--}).addTo(map);-->
+        <!--})-->
+    <!--</script>-->
+</body>
+</html>

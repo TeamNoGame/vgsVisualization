@@ -44,16 +44,19 @@
 <div class="container-fluid">
   <!-- Title of the Visualization -->
   <h1 class="display-1" style="text-align: center;">The History of Video Games</h1><hr>
+  <div class="progress sticky-top" style="top: 1%">
+    <div id="timeline-progressbar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
   <!-- Timeline Container -->
   <div id="timeline" class="timeline-container">
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1980</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event" id="event01"><a>Event</a></dt>
+        <dt class="timeline-event start-open" id="event01"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event01EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event" id="event02"><a>Another Event</a></dt>
+        <dt class="timeline-event start-open" id="event02"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event02EX">
           <p>Content about the other event...</p>
         </dd>
@@ -63,11 +66,11 @@
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1981</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event" id="event03"><a>Event</a></dt>
+        <dt class="timeline-event start-open" id="event03"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event03EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event" id="event04"><a>Another Event</a></dt>
+        <dt class="timeline-event start-open" id="event04"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event04EX">
           <p>Content about the other event...</p>
         </dd>
@@ -77,11 +80,11 @@
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1982</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event" id="event05"><a>Event</a></dt>
+        <dt class="timeline-event start-open" id="event05"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event05EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event" id="event06"><a>Another Event</a></dt>
+        <dt class="timeline-event start-open" id="event06"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event06EX">
           <p>Content about the other event...</p>
         </dd>
@@ -181,6 +184,19 @@
     // Instantiate the timeline --> jQuery.
     // console.log(vgsData);
     $.timeliner({});
+    $(window).scroll(function () {
+      const pageTop = $(window).scrollTop();
+      const pageBottom = $(document).height() - $(window).height();
+      console.log(pageTop);
+      console.log(pageBottom);
+      let scrollPercent = pageTop / pageBottom;
+      let position = scrollPercent * 100;
+      $('#timeline-progressbar').css('width', position+'%').attr('aria-valuenow', position);
+    });
+
+
+    //.progressbar('value', position);
+    //<div id="timeline-progressbar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
   }
 </script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

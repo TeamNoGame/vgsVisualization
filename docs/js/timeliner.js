@@ -135,6 +135,7 @@
     }
 
     $( window ).scroll(function() {
+      // Opens timeline when scrolling
       $(".timeline-wrapper").each(function() {
         let current = $(this);
         if (isElementInView($('#' + current.find('.timeline-event')[0].id), true) ||

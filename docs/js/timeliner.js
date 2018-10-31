@@ -186,11 +186,13 @@
               $(`#${current.find('.timeline-event')[i].id}`),
               $(`#${current.find('.timeline-event-content')[i].id}`)
             );
-          } else if (current.find('a').is('.open')) {
-            closeEvent(
-              $(`#${current.find('.timeline-event')[i].id}`),
-              $(`#${current.find('.timeline-event-content')[i].id}`)
-            );
+          } else {
+            if (current.find('a').is('.open')) {
+              closeEvent(
+                $(`#${current.find('.timeline-event')[i].id}`),
+                $(`#${current.find('.timeline-event-content')[i].id}`)
+              );
+            }
           }
         }
       });

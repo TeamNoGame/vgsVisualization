@@ -44,17 +44,39 @@
 <div class="container-fluid">
   <!-- Title of the Visualization -->
   <h1 class="display-1" style="text-align: center;">The History of Video Games</h1><hr>
+
+  <div class="card text-center">
+    <div class="card-header">
+      Major Event
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Nintendogs launched!</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#event18" class="btn btn-primary">Learn More</a>
+    </div>
+    <div class="card-footer text-muted">
+      1991
+    </div>
+  </div>
+
+  <div class="sticky-top" style="top: 1%">
+    <div class="progress" style="display: none">
+      <div id="timeline-progressbar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      </div>
+    </div>
+  </div>
+
   <!-- Timeline Container -->
-  <div id="timeline" class="timeline-container">
+  <div data-spy="scroll" data-target="#navbar-timelin" data-offset="0" id="timeline" class="timeline-container">
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1980</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event" id="event01"><a>Event</a></dt>
+        <dt class="timeline-event start-open" id="event01"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event01EX">
           <p>Content about the event goes here...</p>
           <div id='graph1'></div>
         </dd>
-        <dt class="timeline-event" id="event02"><a>Another Event</a></dt>
+        <dt class="timeline-event start-open" id="event02"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event02EX">
           <p>Content about the other event...</p>
           <div id="graph2"></div>
@@ -65,11 +87,11 @@
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1981</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event" id="event03"><a>Event</a></dt>
+        <dt class="timeline-event start-open" id="event03"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event03EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event" id="event04"><a>Another Event</a></dt>
+        <dt class="timeline-event start-open" id="event04"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event04EX">
           <p>Content about the other event...</p>
         </dd>
@@ -79,11 +101,11 @@
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1982</h2>
       <dl class="timeline-series">
-        <dt class="timeline-event" id="event05"><a>Event</a></dt>
+        <dt class="timeline-event start-open" id="event05"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event05EX">
           <p>Content about the event goes here...</p>
         </dd>
-        <dt class="timeline-event" id="event06"><a>Another Event</a></dt>
+        <dt class="timeline-event start-open" id="event06"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event06EX">
           <p>Content about the other event...</p>
         </dd>
@@ -105,7 +127,7 @@
     </div>
     <br class="clear">
     <div class="timeline-wrapper">
-      <h2 class="timeline-time">1983</h2>
+      <h2 class="timeline-time">1984</h2>
       <dl class="timeline-series">
         <dt class="timeline-event" id="event09"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event09EX">
@@ -119,7 +141,7 @@
     </div>
     <br class="clear">
     <div class="timeline-wrapper">
-      <h2 class="timeline-time">1983</h2>
+      <h2 class="timeline-time">1985</h2>
       <dl class="timeline-series">
         <dt class="timeline-event" id="event11"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event11EX">
@@ -133,7 +155,7 @@
     </div>
     <br class="clear">
     <div class="timeline-wrapper">
-      <h2 class="timeline-time">1983</h2>
+      <h2 class="timeline-time">1986</h2>
       <dl class="timeline-series">
         <dt class="timeline-event" id="event13"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event13EX">
@@ -147,7 +169,7 @@
     </div>
     <br class="clear">
     <div class="timeline-wrapper">
-      <h2 class="timeline-time">1983</h2>
+      <h2 class="timeline-time">1987</h2>
       <dl class="timeline-series">
         <dt class="timeline-event" id="event15"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event15EX">
@@ -161,7 +183,7 @@
     </div>
     <br class="clear">
     <div class="timeline-wrapper">
-      <h2 class="timeline-time">1983</h2>
+      <h2 class="timeline-time">1988</h2>
       <dl class="timeline-series">
         <dt class="timeline-event" id="event17"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event17EX">
@@ -181,9 +203,32 @@
 <script type="text/javascript">
   function doneLoadingData() {
     // Instantiate the timeline --> jQuery.
+<<<<<<< HEAD
     $(document).ready(function() {
       $.timeliner({});
     });
+=======
+    // console.log(vgsData);
+    $.timeliner({});
+    $(window).scroll(function () {
+      var firstYear = $('#timeline');
+      var firstYearPos = firstYear.position().top;
+      var pageTop = $(window).scrollTop();
+      if (pageTop > firstYearPos) {
+        $('.progress').css('display', 'flex');
+        pageTop = pageTop - firstYearPos;
+        var pageBottom = $(document).height() - $(window).height() - firstYearPos;
+        var scrollPercent = pageTop / pageBottom;
+        var position = scrollPercent * 100;
+      } else {
+        $('.progress').css('display', 'none');
+        position = 0;
+      }
+      $('#timeline-progressbar').css('width', position+'%').attr('aria-valuenow', position);
+    });
+    //.progressbar('value', position);
+    //<div id="timeline-progressbar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+>>>>>>> master
   }
 </script>
 <script src="js/traceMaker.js"></script>

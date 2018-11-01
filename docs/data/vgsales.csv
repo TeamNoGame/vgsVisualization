@@ -1832,7 +1832,7 @@ Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,G
 1832,Spider-Man 2,XB,2004,Action,Activision,0.82,0.26,0,0.04,1.12
 1833,Counter-Strike,XB,2003,Shooter,Microsoft Game Studios,0.85,0.23,0,0.04,1.11
 1834,Mad Max (2015),PS4,2015,Action,Warner Bros. Interactive Entertainment,0.32,0.58,0.04,0.17,1.11
-1835,Transformers: The Game (XBox 360, PS2, PS3, Wii & PC Versions),PS2,2007,Action,Activision,0.63,0.37,0,0.11,1.11
+1835,Transformers: The Game (XBox 360 PS2 PS3 Wii & PC Versions),PS2,2007,Action,Activision,0.63,0.37,0,0.11,1.11
 1836,GRID,PS3,2008,Racing,Codemasters,0.31,0.57,0.03,0.2,1.11
 1837,Guitar Hero Encore: Rocks The 80s,PS2,2007,Misc,RedOctane,0.92,0.04,0,0.15,1.11
 1838,Sunset Overdrive,XOne,2014,Shooter,Microsoft Game Studios,0.62,0.4,0,0.08,1.11
@@ -2887,7 +2887,7 @@ Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,G
 2887,Blast Corps,N64,1997,Action,Nintendo,0.39,0.09,0.17,0.06,0.71
 2888,LEGO Harry Potter: Years 1-4,PSP,2010,Action,Warner Bros. Interactive Entertainment,0.14,0.37,0,0.19,0.71
 2889,Tactics Ogre: Let Us Cling Together,SNES,1995,Role-Playing,Quest,0,0,0.71,0,0.71
-2890,WarioWare, Inc.: Mega Party Game$,GC,2003,Puzzle,Nintendo,0.2,0.05,0.44,0.02,0.71
+2890,WarioWare Inc.: Mega Party Game$,GC,2003,Puzzle,Nintendo,0.2,0.05,0.44,0.02,0.71
 2891,Football Manager 2014,PC,2013,Sports,Sega,0,0.6,0,0.1,0.71
 2892,Battle Arena Toshinden 2,PS,1995,Fighting,Sony Computer Entertainment,0.15,0.1,0.41,0.05,0.71
 2893,WWE SmackDown vs. Raw 2011,PSP,2010,Fighting,THQ,0.22,0.31,0,0.17,0.71
@@ -3048,7 +3048,7 @@ Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,G
 3048,NHL 13,X360,2012,Sports,Electronic Arts,0.51,0.11,0,0.05,0.67
 3049,Borderlands: The Pre-Sequel,PS3,2014,Shooter,Take-Two Interactive,0.25,0.26,0.05,0.11,0.67
 3050,The Sims 3: High-End Loft Stuff,PC,2010,Simulation,Electronic Arts,0.01,0.53,0,0.12,0.67
-3051,The Chronicles of Narnia: The Lion, The Witch and The Wardrobe,GBA,N/A,Action,Disney Interactive Studios,0.48,0.18,0,0.01,0.67
+3051,The Chronicles of Narnia: The Lion The Witch and The Wardrobe,GBA,N/A,Action,Disney Interactive Studios,0.48,0.18,0,0.01,0.67
 3052,Zaidan Houjin Nippon Kanji Nouryoku Kentei Kyoukai Koushiki Soft: 200 Mannin no KanKen: Tokoton Kanji Nou,DS,2006,Misc,IE Institute,0,0,0.66,0,0.66
 3053,Pro Pinball: Big Race USA,PS,1999,Simulation,Take-Two Interactive,0.37,0.25,0,0.04,0.66
 3054,NFL Street,XB,2004,Sports,Electronic Arts,0.49,0.15,0,0.02,0.66
@@ -3088,7 +3088,7 @@ Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,G
 3088,Um Jammer Lammy,PS,1998,Misc,Sony Computer Entertainment,0.12,0.08,0.41,0.04,0.66
 3089,Brothers In Arms: Road to Hill 30,XB,2005,Shooter,Ubisoft,0.49,0.14,0,0.02,0.66
 3090,Madden NFL 10,PSP,2009,Sports,Electronic Arts,0.5,0.08,0,0.08,0.66
-3091,Transformers: The Game (XBox 360, PS2, PS3, Wii & PC Versions),PSP,2007,Action,Activision,0.23,0.27,0,0.16,0.66
+3091,Transformers: The Game (XBox 360 PS2 PS3 Wii & PC Versions),PSP,2007,Action,Activision,0.23,0.27,0,0.16,0.66
 3092,Taiko no Tatsujin DS: Touch de Dokodon!,DS,2007,Misc,Namco Bandai Games,0,0,0.66,0,0.66
 3093,F1 2015,PS4,2015,Racing,Codemasters,0.09,0.44,0.03,0.09,0.66
 3094,Scene It? Box Office Smash,X360,2008,Misc,Microsoft Game Studios,0.33,0.25,0,0.07,0.66
@@ -3326,7 +3326,7 @@ Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,G
 3326,Disney TH!NK Fast: The Ultimate Trivia Showdown,Wii,2008,Misc,Disney Interactive Studios,0.37,0.16,0.01,0.06,0.61
 3327,Spider-Man: Mysterio's Menace,GBA,2001,Action,Activision,0.43,0.16,0,0.01,0.61
 3328,Madden NFL 2000,N64,1999,Sports,Electronic Arts,0.58,0.02,0,0,0.61
-3329,Transformers: The Game (XBox 360, PS2, PS3, Wii & PC Versions),X360,2007,Action,Activision,0.51,0.05,0,0.05,0.61
+3329,Transformers: The Game (XBox 360 PS2 PS3 Wii & PC Versions),X360,2007,Action,Activision,0.51,0.05,0,0.05,0.61
 3330,Game & Watch Gallery 4,GBA,2002,Misc,Nintendo,0.43,0.16,0,0.01,0.61
 3331,Littlest Pet Shop: Jungle,DS,2008,Simulation,Electronic Arts,0.34,0.2,0,0.06,0.61
 3332,Naruto: Ultimate Ninja,PS2,2003,Fighting,Atari,0.5,0.02,0,0.08,0.61
@@ -3410,7 +3410,7 @@ Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,G
 3410,Smurf: Rescue In Gargamel's Castle,2600,1981,Action,Coleco,0.55,0.03,0,0.01,0.59
 3411,Spelling Challenges and more!,DS,2007,Misc,505 Games,0.54,0,0,0.04,0.59
 3412,Go Diego Go! Great Dinosaur Rescue,Wii,2008,Action,Take-Two Interactive,0.53,0.02,0,0.04,0.59
-3413,Transformers: The Game (XBox 360, PS2, PS3, Wii & PC Versions),Wii,2007,Action,Activision,0.52,0.03,0,0.04,0.59
+3413,Transformers: The Game (XBox 360 PS2 PS3 Wii & PC Versions),Wii,2007,Action,Activision,0.52,0.03,0,0.04,0.59
 3414,Extreme-G,N64,1997,Racing,Acclaim Entertainment,0.47,0.11,0,0.01,0.59
 3415,Ready 2 Rumble Boxing,N64,1999,Sports,Midway Games,0.47,0.11,0,0.01,0.59
 3416,Payday 2,X360,2013,Shooter,505 Games,0.33,0.21,0,0.05,0.59

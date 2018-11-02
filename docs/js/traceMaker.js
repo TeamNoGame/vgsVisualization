@@ -60,7 +60,7 @@ function makeTraces() {
     if(!platform.includes(row['Platform'])) platform.push(row['Platform']);
     // find all unique genres
     if(!genre.includes(row['Genre'])) genre.push(row['Genre']);
-    // find all unique publishers
+    // make data for top 11 publishers
     if(publisher.includes(row['Publisher'])){
       publisherSales[publisher.indexOf(row['Publisher'])][row['Year'] - 1980] += (row['NA_Sales'] + row['EU_Sales'] + row['JP_Sales'] + row['Other_Sales'] + row['Global_Sales'])
     }

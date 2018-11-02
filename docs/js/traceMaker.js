@@ -1,20 +1,26 @@
 function makeTraces() {
   console.log(vgsData);
-  let rank = [], name = [], platform = [], year = [], genre = [], publisher = [], NAsales = [], EUsales = [],
+  let rank = [], name = [], platform = [], year = [], genre = [], publisher = ["Activision", "Atari", "Bethesda Softworks", "Electronic Arts", "Microsoft Game Studios", "Nintendo", "Sega", "Sony Computer Entertainment", "SquareSoft", "Take-Two Interactive", "Ubisoft"], NAsales = [], EUsales = [],
       JPsales = [], otherSales = [], globalSales = [];
 // yearly sales (graph1)
   let yearlyNA = [], yearlyEU = [], yearlyJP = [], yearlyOther = [], yearlyGlobal = [];
 // for x: year traces (graph1)
   let flatYears = [];
-  for (let i = 1980; i <= 2020; i++) {
+  let publisherSales = [[],[],[],[],[],[],[],[],[],[],[]];
+  for (let i = 1980; i <= 2017; i++) {
     flatYears.push(i);
     yearlyNA.push(0);
     yearlyJP.push(0);
     yearlyEU.push(0);
     yearlyOther.push(0);
     yearlyGlobal.push(0);
-
+    for (let j = 0; j < publisherSales.length; j++){
+      publisherSales[j].push(0);
+    }
   }
+
+
+
 
   // sales by genre
   let genreNA = [], genreEU = [], genreJP = [], genreOther = [], genreGlobal = [];
@@ -55,7 +61,9 @@ function makeTraces() {
     // find all unique genres
     if(!genre.includes(row['Genre'])) genre.push(row['Genre']);
     // find all unique publishers
-    if(!publisher.includes(row['Publisher'])) publisher.push(row['Publisher']);
+    if(publisher.includes(row['Publisher'])){
+      publisherSales[publisher.indexOf(row['Publisher'])][row['Year'] - 1980] += (row['NA_Sales'] + row['EU_Sales'] + row['JP_Sales'] + row['Other_Sales'] + row['Global_Sales'])
+    }
 
     // make arrays for sales by genre by region
     genreNA[genre.indexOf(row['Genre'])] += row['NA_Sales'];
@@ -78,12 +86,16 @@ function makeTraces() {
   console.log(platform, genre, publisher);
   console.log(flatYears);
   console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
+  console.log('THIS IS THE TEST ARRAY', publisherSales);
+
+
 
 //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
 
 //console.log(rank, name, platform, year, genre, publisher, NAsales, EUsales, JPsales, otherSales, globalSales);
 
   buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
+  buildGraph2(flatYears, publisherSales);
 }
 
 function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal) {
@@ -119,9 +131,77 @@ function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearl
   };
   const data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
   console.log(data);
-  Plotly.newPlot('graph1', data, { barmode: 'group', title: 'Sales by Release Date by Region in Millions'});
+  Plotly.newPlot('graph1', data, { barmode: 'group', title: 'Sales by Release Date by Region in Millions', responsive: true});
 }
 
-function buildGraph2(genre, genreNA, genreEU, genreJP, genreOther, genreGlobal){
+function buildGraph2(flatYears, publisherSales){
+  const activision = {
+    x: flatYears,
+    y: publisherSales[0],
+    name: 'Activision',
+    type: 'bar'
+  };
+  const atari = {
+    x: flatYears,
+    y: publisherSales[1],
+    name: 'Atari',
+    type: 'bar'
+  };
+  const bethesda = {
+    x: flatYears,
+    y: publisherSales[2],
+    name: 'Bethesda',
+    type: 'bar'
+  };
+  const EA = {
+    x: flatYears,
+    y: publisherSales[3],
+    name: 'Electronic Arts',
+    type: 'bar'
+  };
+  const microsoft = {
+    x: flatYears,
+    y: publisherSales[4],
+    name: 'Microsoft',
+    type: 'bar'
+  };
+  const nintendo = {
+    x: flatYears,
+    y: publisherSales[5],
+    name: 'Nintendo',
+    type: 'bar'
+  };
+  const sega = {
+    x: flatYears,
+    y: publisherSales[6],
+    name: 'Sega',
+    type: 'bar'
+  };
+  const sony = {
+    x: flatYears,
+    y: publisherSales[7],
+    name: 'Sony',
+    type: 'bar'
+  };
+  const squaresoft = {
+    x: flatYears,
+    y: publisherSales[8],
+    name: 'SquareSoft',
+    type: 'bar'
+  };
+  const take2 = {
+    x: flatYears,
+    y: publisherSales[9],
+    name: 'Take-Two Interactive',
+    type: 'bar'
+  };
+  const ubisoft = {
+    x: flatYears,
+    y: publisherSales[10],
+    name: 'Ubisoft',
+    type: 'bar'
+  };
+  const data = [activision, atari, bethesda, EA, microsoft, nintendo, sega, sony, squaresoft, take2, ubisoft];
+  Plotly.newPlot('graph2', data, { barmode: 'group', title: 'Sales Top-Selling Publishers', responsive: true});
 
 }

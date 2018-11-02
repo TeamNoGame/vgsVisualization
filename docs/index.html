@@ -73,13 +73,14 @@
       <dl class="timeline-series">
         <dt class="timeline-event start-open" id="event01"><a>Event</a></dt>
         <dd class="timeline-event-content" id="event01EX">
-          <p>Content about the event goes here...</p>
-          <div id='graph1'></div>
+            <div style="display: block" id='graph1'></div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </dd>
         <dt class="timeline-event start-open" id="event02"><a>Another Event</a></dt>
         <dd class="timeline-event-content" id="event02EX">
           <p>Content about the other event...</p>
           <div id="graph2"></div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </dd>
       </dl>
     </div>
@@ -203,7 +204,7 @@
 <script type="text/javascript">
   function doneLoadingData() {
     // Instantiate the timeline --> jQuery.
-    // console.log(vgsData);
+    console.log(vgsData);
     $.timeliner({});
     $(window).scroll(function () {
       var firstYear = $('#timeline');

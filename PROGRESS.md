@@ -52,6 +52,6 @@ platform, or genre performed best for that year.
 
 Utilizing: Plotly, Bootstrap, Query, and timeliner.js (Open-Source - MIT License)
 
-![altPresentationImg7](PresentationImg7.png)
-
 ![altPresentationImg7](PresentationImg8.png)
+
+![altPresentationImg7](PresentationImg7.png)

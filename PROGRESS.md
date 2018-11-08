@@ -2,7 +2,7 @@
 
 ## Version 1
 
-<img src="PresentationImg6.png" alt="Presentation Image 1" style="text-align: center; width: 50%; height: 50%;"/>
+<img src="PresentationImg6.png" alt="Presentation Image 1" style="text-align: center; max-width: 50%; max-height: 50%;"/>
 
 ## Version 2
 

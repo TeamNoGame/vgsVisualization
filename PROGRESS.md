@@ -1,5 +1,7 @@
 # Introduction
 
+![AltImage](PresentationImg9.png)
+
 The main goal of our visualization is to tell the history of video games.
 
 The dataset capitalizes on the sales of video games between 1980 and 2016. The additional layer of region-separated sales can explain how these same stories differ by culture. 
@@ -23,18 +25,8 @@ Mariah:
 What genre is most popular by region?
 How was this affected by a region's culture and history?
 
-#The Dataset
-
-##Goals
-
 Our goal is to provide them enough content (history and charts) within the timeline to find their own conclusions without hassle. At the very least, we will have sections of the timeline
 which can answer the questions we posed above.
-Attributes in the data set include game name, publisher name, release year for the game, game genre, rank of the video game based on number of copies sold, and number of copies sold globally and number of copies sold based on region (NA, EU, JP, and Other).
-Based on this info we were thinking of building graphs which show things such as "In which year/time periods were certain genres, publishers, or platforms popular or successful?" and "Which countries contributed the most to video game sales and in which time periods?"
-Using these graphs, we hope to tell the story about things like how certain genres rose and fell in popularity and in which countries, and about which publishers had success on which platforms and in what eras, and thorugh which specific games. We also intend to show outliars such as which games sold the most copies and which platforms or genres sold the most copies.
-
-##Example Graphs
-
 
 # Mock-Up Sketches
 

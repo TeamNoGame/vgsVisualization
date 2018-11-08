@@ -2,7 +2,7 @@
 
 ## Version 1
 
-![Version 1 Image](PresentationImg6.png)
+<img src="PresentationImg6.png" alt="Presentation Image 1" style="text-align: center"/>
 
 ## Version 2
 

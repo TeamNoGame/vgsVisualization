@@ -1,3 +1,31 @@
+# Introduction
+
+The main goal of our visualization is to tell the history of video games.
+
+The dataset capitalizes on the sales of video games between 1980 and 2016. The additional layer of region-separated sales can explain how these same stories differ by culture. 
+In the same way that your Amazon purchase history can explain if you're a serial killer, the sale history of video games can tell the tales of a publisher, platform, 
+or genre's success... or failure. For example, the dataset claims the 15 top-selling games of this time period were published by Nintendo. 
+But only by stepping through each release year can we see what led Nintendo to claim these spots. 
+
+This is why we've decided to display our dashboard as a timeline, which will allow users to "step through" the data and follow the stories within video game history.
+
+Each person accessing the visualizations will have different conclusions they want to draw from the sale history. Even amongst ourselves, we have different interests.
+As indivual members, we discussed what sort of questions we are most insterested in answering:
+
+Sae: 
+For each release year, which genre/publisher/platform is leading in sales?
+
+Kian:
+Which platform / publisher is most successful?
+Furthermore, which games led to that success?
+
+Mariah:
+What genre is most popular by region?
+How was this affected by a region's culture and history?
+
+Our goal is to provide them enough content (history and charts) within the timeline to find their own conclusions without hassle. At the very least, we will have sections of the timeline
+which can answer the questions we posed above.
+
 # Mock-Up Sketches
 
 ## Sketch 1:

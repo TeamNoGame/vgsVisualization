@@ -131,7 +131,7 @@ function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearl
   };
   const data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
   console.log(data);
-  Plotly.newPlot('graph1', data, { barmode: 'group', title: 'Sales by Release Date by Region in Millions', responsive: true});
+  // Plotly.newPlot('graph1', data, { barmode: 'group', title: 'Sales by Release Date by Region in Millions', responsive: true});
 }
 
 function buildGraph2(flatYears, publisherSales){
@@ -202,6 +202,5 @@ function buildGraph2(flatYears, publisherSales){
     type: 'bar'
   };
   const data = [activision, atari, bethesda, EA, microsoft, nintendo, sega, sony, squaresoft, take2, ubisoft];
-  Plotly.newPlot('graph2', data, { barmode: 'group', title: 'Sales Top-Selling Publishers', responsive: true});
-
+  // Plotly.newPlot('graph2', data, { barmode: 'group', title: 'Sales Top-Selling Publishers', responsive: true});
 }

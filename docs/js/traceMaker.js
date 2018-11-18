@@ -62,7 +62,7 @@ function makeTraces() {
     if(!genre.includes(row['Genre'])) genre.push(row['Genre']);
     // make data for top 11 publishers
     if(publisher.includes(row['Publisher'])){
-      publisherSales[publisher.indexOf(row['Publisher'])][row['Year'] - 1980] += (row['NA_Sales'] + row['EU_Sales'] + row['JP_Sales'] + row['Other_Sales'] + row['Global_Sales'])
+      publisherSales[publisher.indexOf(row['Publisher'])][row['Year'] - 1980] += (row['NA_Sales'] + row['EU_Sales'] + row['JP_Sales'] + row['Other_Sales'] + row['Global_Sales']);
     }
 
     // make arrays for sales by genre by region

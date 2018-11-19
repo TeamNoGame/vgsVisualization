@@ -14,6 +14,7 @@ function readFiles() {
       row['Other_Sales'] = parseFloat(row['Other_Sales']);
       row['Global_Sales'] = parseFloat(row['Global_Sales']);
     }
+    vgsData.pop();
     doneLoadingData();
     makeTraces();
   });

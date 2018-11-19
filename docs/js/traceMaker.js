@@ -1,5 +1,5 @@
 function makeTraces() {
-  console.log(vgsData);
+  // console.log(vgsData);
   let rank = [], name = [], platform = [], year = [], genre = [], publisher = ["Activision", "Atari", "Bethesda Softworks", "Electronic Arts", "Microsoft Game Studios", "Nintendo", "Sega", "Sony Computer Entertainment", "SquareSoft", "Take-Two Interactive", "Ubisoft"], NAsales = [], EUsales = [],
       JPsales = [], otherSales = [], globalSales = [];
 // yearly sales (graph1)
@@ -19,9 +19,6 @@ function makeTraces() {
     }
   }
 
-
-
-
   // sales by genre
   let genreNA = [], genreEU = [], genreJP = [], genreOther = [], genreGlobal = [];
   for(let i = 0; i<16; i++){
@@ -31,6 +28,8 @@ function makeTraces() {
     genreOther.push(0);
     genreGlobal.push(0);
   }
+
+  let bob = false;
 
   // parse stuff
   for (let i = 0; i < vgsData.length; i++) {
@@ -48,7 +47,6 @@ function makeTraces() {
     JPsales.push(row['JP_Sales']);
     otherSales.push(row['Other_Sales']);
     globalSales.push(row['Global_Sales']);
-
     // sum sales by region and year
     yearlyNA[row['Year']] += row['NA_Sales'];
     yearlyEU[row['Year']] += row['EU_Sales'];
@@ -60,7 +58,7 @@ function makeTraces() {
     if(!platform.includes(row['Platform'])) platform.push(row['Platform']);
     // find all unique genres
     if(!genre.includes(row['Genre'])) genre.push(row['Genre']);
-    // make data for top 11 publishers
+     // make data for top 11 publishers
     if(publisher.includes(row['Publisher'])){
       publisherSales[publisher.indexOf(row['Publisher'])][row['Year'] - 1980] += (row['NA_Sales'] + row['EU_Sales'] + row['JP_Sales'] + row['Other_Sales'] + row['Global_Sales']);
     }
@@ -80,15 +78,42 @@ function makeTraces() {
     yearlyGlobal[row['Year'] - 1980] += row['Global_Sales'];
   }
 
+  /***********************************************/
+
+  // Sort genres of a particular publisher by most sold
+  let genreSales = [];
+  let selectedPub = 'Activision';
+
+  for(let i=0; i < genre.length; i++) {
+    genreSales[i] = 0;
+  }
+
+  for (let i = 0; i < vgsData.length; i++) {
+    const row = vgsData[i];
+    if (row['Publisher'] == selectedPub) {
+      // console.log(row);
+      // console.log(genre.indexOf(row['Genre']));
+      // console.log(genre[genre.indexOf(row['Genre'])]);
+      genreSales[genre.indexOf(row['Genre'])] += row['EU_Sales'];
+    }
+  }
+
+  // for(let i=0; i < genre.length; i++) {
+  //   console.log(genre[i]);
+  //   console.log(genreSales[i]);
+  // }
+
+  /***********************************************/
+
   platform.sort();
   //genre.sort();
   publisher.sort();
-  console.log(platform, genre, publisher);
-  console.log(flatYears);
-  console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
-  console.log('THIS IS THE TEST ARRAY', publisherSales);
+  // console.log(platform, genre, publisher);
+  // console.log(flatYears);
+  // console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
+  // console.log('THIS IS THE TEST ARRAY', publisherSales);
 
-
+  console.log('There are ' + genre.length + ' unique genres.');
 
 //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
 
@@ -96,6 +121,22 @@ function makeTraces() {
 
   buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
   buildGraph2(flatYears, publisherSales);
+  buildGenre(genreSales, genre);
+}
+
+function buildGenre(genreSales, genres) {
+  const genreTrace = [{
+    values: genreSales, //GenreSales (floats)
+    labels: genres, // GenreNames
+    type: 'pie'
+  }];
+
+  const layout = {
+    height: 400,
+    width: 500
+  };
+
+  Plotly.newPlot('best-genres', genreTrace, layout);
 }
 
 function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal) {
@@ -130,7 +171,7 @@ function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearl
     type: 'bar'
   };
   const data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
-  console.log(data);
+  // console.log(data);
   Plotly.newPlot('graph1', data, { barmode: 'group', title: 'Sales by Release Date by Region in Millions', responsive: true});
 }
 

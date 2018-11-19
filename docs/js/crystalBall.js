@@ -12,6 +12,7 @@ let THQN = '';
 let TTWO = '';
 let UBIPA = '';
 
+// TODO fix date parsing
 function readFiles() {
   jQuery.get('./data/ATVI.csv', function (txt) {
     ATVI = txt;

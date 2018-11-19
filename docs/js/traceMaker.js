@@ -83,10 +83,10 @@ function makeTraces() {
   platform.sort();
   //genre.sort();
   publisher.sort();
-  console.log(platform, genre, publisher);
-  console.log(flatYears);
-  console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
-  console.log('THIS IS THE TEST ARRAY', publisherSales);
+  // console.log(platform, genre, publisher);
+  // console.log(flatYears);
+  // console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
+  // console.log('THIS IS THE TEST ARRAY', publisherSales);
 
 
 
@@ -130,7 +130,7 @@ function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearl
     type: 'bar'
   };
   const data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
-  console.log(data);
+  // console.log(data);
   // Plotly.newPlot('graph1', data, { barmode: 'group', title: 'Sales by Release Date by Region in Millions', responsive: true});
 }
 

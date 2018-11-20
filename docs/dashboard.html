@@ -64,49 +64,19 @@
     -khtml-user-drag: element;
     -webkit-user-drag: element;
   }
-  #columns .column {
-    height: 150px;
-    width: 150px;
-    float: left;
-    border: 2px solid #666666;
-    background-color: #ccc;
-    margin-right: 5px;
-    -webkit-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 3px #000;
-    -ms-box-shadow: inset 0 0 3px #000;
-    box-shadow: inset 0 0 3px #000;
-    text-align: center;
-    cursor: move;
+  .mainView .over {
+    border: 2px dashed #000;
   }
-  #columns .column header {
-    color: #fff;
-    text-shadow: #000 0 1px;
-    box-shadow: 5px;
-    padding: 5px;
-    background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-    background: -webkit-gradient(linear, left top, right top,
-    color-stop(0, rgb(0,0,0)),
-    color-stop(0.50, rgb(79,79,79)),
-    color-stop(1, rgb(21,21,21)));
-    background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-    background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-    border-bottom: 1px solid #ddd;
-    -webkit-border-top-left-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -ms-border-radius-topleft: 10px;
-    border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -ms-border-top-right-radius: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-right-radius: 10px;
+  .row .over {
+    border: 2px dashed #000;
+  }
+  .row .over {
+    border: 2px dashed #000;
   }
   #smallDiv .row {
     max-width: 100%;
     max-height: 100%;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
   #bigDiv .row {
     max-width: 100%;
@@ -161,7 +131,7 @@
     // this.style.opacity = '0.4';
 
     // this/e.target is the source node.
-    this.addClassName('moving');
+    // this.addClassName('moving');
   };
 
   this.handleDragOver = function(e) {
@@ -175,12 +145,12 @@
   };
 
   this.handleDragEnter = function(e) {
-    // this.addClassName('over');
+    this.addClassName('over');
   };
 
   this.handleDragLeave = function(e) {
     // this/e.target is previous target element.
-    // this.removeClassName('over');
+    this.removeClassName('over');
     // this.removeClassName('moving');
   };
 
@@ -197,12 +167,21 @@
       this.innerHTML = e.dataTransfer.getData('text/html');
     }
 
+    [].forEach.call(bigCols, function (bigCol) {
+      bigCol.classList.remove('over');
+    });
+
+    [].forEach.call(smallCols, function (smallCol) {
+      smallCol.classList.remove('over');
+    });
+
     return false;
   };
 
   this.handleDragEnd = function(e) {
     // this/e.target is the source node.
   };
+
   var bigCols = document.querySelectorAll('#bigDiv .mainView');
   [].forEach.call(bigCols, function (bigCol) {
     bigCol.setAttribute('draggable', 'true');  // Enable columns to be draggable.
@@ -213,6 +192,7 @@
     bigCol.addEventListener('drop', this.handleDrop, false);
     bigCol.addEventListener('dragend', this.handleDragEnd, false);
   });
+
   var smallCols = document.querySelectorAll('#smallDiv .row');
   [].forEach.call(smallCols, function (smallCol) {
     smallCol.setAttribute('draggable', 'true');  // Enable columns to be draggable.
@@ -224,17 +204,6 @@
     smallCol.addEventListener('dragend', this.handleDragEnd, false);
   });
 
-  // var cols = document.querySelectorAll('#columns .column');
-  // [].forEach.call(cols, function (col) {
-  //   col.setAttribute('draggable', 'true');  // Enable columns to be draggable.
-  //   col.addEventListener('dragstart', this.handleDragStart, false);
-  //   col.addEventListener('dragenter', this.handleDragEnter, false);
-  //   col.addEventListener('dragover', this.handleDragOver, false);
-  //   col.addEventListener('dragleave', this.handleDragLeave, false);
-  //   col.addEventListener('drop', this.handleDrop, false);
-  //   col.addEventListener('dragend', this.handleDragEnd, false);
-  // });
-
   var typeIndex = 0;
   function typeWriter() {
     var typeWords = localStorage.getItem("chosenCompany") + ' Dashboard';
@@ -244,15 +213,6 @@
       setTimeout(typeWriter, 50);
     }
   }
-
-  function handleDragStart(e) {
-    this.style.opacity = '0.4';  // this / e.target is the source node.
-  }
-
-  var cols = document.querySelectorAll('#columns .column');
-  [].forEach.call(cols, function(col) {
-    col.addEventListener('dragstart', handleDragStart, false);
-  });
 
   function doneLoadingData() {
     typeWriter();

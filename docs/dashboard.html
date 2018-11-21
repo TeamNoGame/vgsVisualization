@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"-->
+  <!--integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="-->
+  <!--crossorigin=""/>-->
+  <!--<link rel="stylesheet" href="css/timeliner.css" type="text/css" media="screen">-->
+
+  <!-- Import leaflet.js javascript API library -->
+  <!--<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"-->
+  <!--integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="-->
+  <!--crossorigin=""></script>-->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- Title -->
+  <title>Video Game Visualization</title>
+</head>
+<style>
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+  }
+
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+  }
+
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+  }
+
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+  }
+  /* Prevent the text contents of draggable elements from being selectable. */
+  [draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+  }
+  .mainView .over {
+    border: 2px dashed #000;
+  }
+  .row .over {
+    border: 2px dashed #000;
+  }
+  .row .over {
+    border: 2px dashed #000;
+  }
+  #smallDiv .row {
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 10px;
+  }
+  #bigDiv .row {
+    max-width: 100%;
+    max-height: 100%;
+  }
+</style>
+<body onload="readFiles();">
+<div>
+  <h1 id="vgdashtitle" style="text-align: center" class="display-1"></h1>
+  <hr>
+  <div id="graphDivs" class="row" style="margin-left: .25%;">
+    <div id="bigDiv" class="col-8">
+      <div class="mainView">
+        <img style="width: 100%; height: 100%;" src="https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=623ed05afcc5a3fa1e444ffca95854dc&w=1000&q=80">
+      </div>
+    </div>
+    <div id="smallDiv" class="col-4">
+      <div class="row">
+        <img style="width: 100%; height: 100%;" src="https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg">
+      </div>
+      <div class="row">
+        <img style="width: 100%; height: 100%;" src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350">
+      </div>
+      <div class="row">
+        <img style="width: 100%; height: 100%;" src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&h=350">
+      </div>
+    </div>
+  </div>
+  <!--<div id="columns">-->
+    <!--<div class="column" draggable="true">-->
+      <!--<img style="width: 100%; height: 100%" src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&h=350" />-->
+    <!--</div>-->
+    <!--<div class="column" draggable="true">-->
+      <!--<img style="width: 100%; height: 100%" src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350" />-->
+    <!--</div>-->
+    <!--<div class="column" draggable="true">-->
+      <!--<img style="width: 100%; height: 100%" src="https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=623ed05afcc5a3fa1e444ffca95854dc&w=1000&q=80" />-->
+    <!--</div>-->
+  <!--</div>-->
+</div>
+<script src="js/dataReading.js"></script>
+<script type="text/javascript">
+  var dragSrcEl = null;
+
+  this.handleDragStart = function(e) {
+
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+
+    dragSrcEl = this;
+
+    // this.style.opacity = '0.4';
+
+    // this/e.target is the source node.
+    // this.addClassName('moving');
+  };
+
+  this.handleDragOver = function(e) {
+    if (e.preventDefault) {
+      e.preventDefault(); // Allows us to drop.
+    }
+
+    e.dataTransfer.dropEffect = 'move';
+
+    return false;
+  };
+
+  this.handleDragEnter = function(e) {
+    this.addClassName('over');
+  };
+
+  this.handleDragLeave = function(e) {
+    // this/e.target is previous target element.
+    this.removeClassName('over');
+    // this.removeClassName('moving');
+  };
+
+  this.handleDrop = function(e) {
+    // this/e.target is current target element.
+
+    if (e.stopPropagation) {
+      e.stopPropagation(); // stops the browser from redirecting.
+    }
+
+    // Don't do anything if we're dropping on the same column we're dragging.
+    if (dragSrcEl != this) {
+      dragSrcEl.innerHTML = this.innerHTML;
+      this.innerHTML = e.dataTransfer.getData('text/html');
+    }
+
+    [].forEach.call(bigCols, function (bigCol) {
+      bigCol.classList.remove('over');
+    });
+
+    [].forEach.call(smallCols, function (smallCol) {
+      smallCol.classList.remove('over');
+    });
+
+    return false;
+  };
+
+  this.handleDragEnd = function(e) {
+    // this/e.target is the source node.
+  };
+
+  var bigCols = document.querySelectorAll('#bigDiv .mainView');
+  [].forEach.call(bigCols, function (bigCol) {
+    bigCol.setAttribute('draggable', 'true');  // Enable columns to be draggable.
+    bigCol.addEventListener('dragstart', this.handleDragStart, false);
+    bigCol.addEventListener('dragenter', this.handleDragEnter, false);
+    bigCol.addEventListener('dragover', this.handleDragOver, false);
+    bigCol.addEventListener('dragleave', this.handleDragLeave, false);
+    bigCol.addEventListener('drop', this.handleDrop, false);
+    bigCol.addEventListener('dragend', this.handleDragEnd, false);
+  });
+
+  var smallCols = document.querySelectorAll('#smallDiv .row');
+  [].forEach.call(smallCols, function (smallCol) {
+    smallCol.setAttribute('draggable', 'true');  // Enable columns to be draggable.
+    smallCol.addEventListener('dragstart', this.handleDragStart, false);
+    smallCol.addEventListener('dragenter', this.handleDragEnter, false);
+    smallCol.addEventListener('dragover', this.handleDragOver, false);
+    smallCol.addEventListener('dragleave', this.handleDragLeave, false);
+    smallCol.addEventListener('drop', this.handleDrop, false);
+    smallCol.addEventListener('dragend', this.handleDragEnd, false);
+  });
+
+  var typeIndex = 0;
+  function typeWriter() {
+    var typeWords = localStorage.getItem("chosenCompany") + ' Dashboard';
+    if (typeIndex < typeWords.length) {
+      document.getElementById("vgdashtitle").innerHTML += typeWords.charAt(typeIndex);
+      typeIndex++;
+      setTimeout(typeWriter, 50);
+    }
+  }
+
+  function doneLoadingData() {
+    typeWriter();
+  }
+</script>
+<script src="js/traceMaker.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<!--<script type="text/javascript" src="js/timeliner.js"></script>-->
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+</html>
+
+<script>
+
+  // Using this polyfill for safety.
+  Element.prototype.hasClassName = function(name) {
+    return new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)").test(this.className);
+  };
+
+  Element.prototype.addClassName = function(name) {
+    if (!this.hasClassName(name)) {
+      this.className = this.className ? [this.className, name].join(' ') : name;
+    }
+  };
+
+  Element.prototype.removeClassName = function(name) {
+    if (this.hasClassName(name)) {
+      var c = this.className;
+      this.className = c.replace(new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)", "g"), "");
+    }
+  };
+
+
+  var samples = samples || {};
+
+  // dragStart
+  (function() {
+    var id_ = 'columns-dragStart';
+    var cols_ = document.querySelectorAll('#' + id_ + ' .column');
+
+    this.handleDragStart = function(e) {
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', 'blah'); // needed for FF.
+
+      // Target element (this) is the source node.
+      this.style.opacity = '0.4';
+    };
+
+    [].forEach.call(cols_, function (col) {
+      // Enable columns to be draggable.
+      col.setAttribute('draggable', 'true');
+      col.addEventListener('dragstart', this.handleDragStart, false);
+    });
+
+  })();
+
+  // dragEnd
+  (function() {
+    var id_ = 'columns-dragEnd';
+    var cols_ = document.querySelectorAll('#' + id_ + ' .column');
+
+    this.handleDragStart = function(e) {
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML); // needed for FF.
+
+      // Target element (this) is the source node.
+      this.style.opacity = '0.4';
+    };
+
+    this.handleDragOver = function(e) {
+      if (e.preventDefault) {
+        e.preventDefault(); // Allows us to drop.
+      }
+
+      e.dataTransfer.dropEffect = 'move';
+
+      return false;
+    };
+
+    this.handleDragEnter = function(e) {
+      this.addClassName('over');
+    };
+
+    this.handleDragLeave = function(e) {
+      // this/e.target is previous target element.
+      this.removeClassName('over');
+    };
+
+    this.handleDragEnd = function(e) {
+      [].forEach.call(cols_, function (col) {
+        col.removeClassName('over');
+      });
+
+      // target element (this) is the source node.
+      this.style.opacity = '1';
+    };
+
+    [].forEach.call(cols_, function (col) {
+      // Enable columns to be draggable.
+      col.setAttribute('draggable', 'true');
+      col.addEventListener('dragstart', this.handleDragStart, false);
+      col.addEventListener('dragenter', this.handleDragEnter, false);
+      col.addEventListener('dragover', this.handleDragOver, false);
+      col.addEventListener('dragleave', this.handleDragLeave, false);
+      col.addEventListener('dragend', this.handleDragEnd, false);
+    });
+
+  })();
+
+  // dragIcon
+  (function() {
+    var id_ = 'columns-dragIcon';
+    var cols_ = document.querySelectorAll('#' + id_ + ' .column');
+
+    this.handleDragStart = function(e) {
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML);
+
+      var dragIcon = document.createElement('img');
+      dragIcon.src = '/static/images/google_logo_small.png';
+      e.dataTransfer.setDragImage(dragIcon, -10, -10);
+
+      // Target element (this) is the source node.
+      this.style.opacity = '0.4';
+    };
+
+    this.handleDragLeave = function(e) {
+      // this/e.target is previous target element.
+      this.removeClassName('over');
+    };
+
+    this.handleDragEnd = function(e) {
+      // this/e.target is the source node.
+
+      this.style.opacity = '1';
+
+      [].forEach.call(cols_, function (col) {
+        col.removeClassName('over');
+      });
+    };
+
+    [].forEach.call(cols_, function (col) {
+      // Enable columns to be draggable.
+      col.setAttribute('draggable', 'true');
+      col.addEventListener('dragstart', this.handleDragStart, false);
+      col.addEventListener('dragend', this.handleDragEnd, false);
+      col.addEventListener('dragleave', this.handleDragLeave, false);
+    });
+
+  })();
+
+  // Almost final example
+  (function() {
+    var id_ = 'columns-almostFinal';
+    var cols_ = document.querySelectorAll('#' + id_ + ' .column');
+    var dragSrcEl_ = null;
+
+    this.handleDragStart = function(e) {
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML);
+
+      dragSrcEl_ = this;
+
+      this.style.opacity = '0.4';
+
+      // this/e.target is the source node.
+      this.addClassName('moving');
+    };
+
+    this.handleDragOver = function(e) {
+      if (e.preventDefault) {
+        e.preventDefault(); // Allows us to drop.
+      }
+
+      e.dataTransfer.dropEffect = 'move';
+
+      return false;
+    };
+
+    this.handleDragEnter = function(e) {
+      this.addClassName('over');
+    };
+
+    this.handleDragLeave = function(e) {
+      // this/e.target is previous target element.
+
+      this.removeClassName('over');
+    };
+
+    this.handleDrop = function(e) {
+      // this/e.target is current target element.
+
+      if (e.stopPropagation) {
+        e.stopPropagation(); // stops the browser from redirecting.
+      }
+
+      // Don't do anything if we're dropping on the same column we're dragging.
+      if (dragSrcEl_ != this) {
+        dragSrcEl_.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
+      }
+
+      return false;
+    };
+
+    this.handleDragEnd = function(e) {
+      // this/e.target is the source node.
+      this.style.opacity = '1';
+
+      [].forEach.call(cols_, function (col) {
+        col.removeClassName('over');
+        col.removeClassName('moving');
+      });
+    };
+
+    [].forEach.call(cols_, function (col) {
+      col.setAttribute('draggable', 'true');  // Enable columns to be draggable.
+      col.addEventListener('dragstart', this.handleDragStart, false);
+      col.addEventListener('dragenter', this.handleDragEnter, false);
+      col.addEventListener('dragover', this.handleDragOver, false);
+      col.addEventListener('dragleave', this.handleDragLeave, false);
+      col.addEventListener('drop', this.handleDrop, false);
+      col.addEventListener('dragend', this.handleDragEnd, false);
+    });
+  })();
+
+  // Full example
+  (function() {
+    var id_ = 'columns-full';
+    var cols_ = document.querySelectorAll('#' + id_ + ' .column');
+    var dragSrcEl_ = null;
+
+    this.handleDragStart = function(e) {
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML);
+
+      dragSrcEl_ = this;
+
+      // this/e.target is the source node.
+      this.addClassName('moving');
+    };
+
+    this.handleDragOver = function(e) {
+      if (e.preventDefault) {
+        e.preventDefault(); // Allows us to drop.
+      }
+
+      e.dataTransfer.dropEffect = 'move';
+
+      return false;
+    };
+
+    this.handleDragEnter = function(e) {
+      this.addClassName('over');
+    };
+
+    this.handleDragLeave = function(e) {
+      // this/e.target is previous target element.
+      this.removeClassName('over');
+    };
+
+    this.handleDrop = function(e) {
+      // this/e.target is current target element.
+
+      if (e.stopPropagation) {
+        e.stopPropagation(); // stops the browser from redirecting.
+      }
+
+      // Don't do anything if we're dropping on the same column we're dragging.
+      if (dragSrcEl_ != this) {
+        dragSrcEl_.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
+
+        // Set number of times the column has been moved.
+        var count = this.querySelector('.count');
+        var newCount = parseInt(count.getAttribute('data-col-moves')) + 1;
+        count.setAttribute('data-col-moves', newCount);
+        count.textContent = 'moves: ' + newCount;
+      }
+
+      return false;
+    };
+
+    this.handleDragEnd = function(e) {
+      // this/e.target is the source node.
+      [].forEach.call(cols_, function (col) {
+        col.removeClassName('over');
+        col.removeClassName('moving');
+      });
+    };
+
+    [].forEach.call(cols_, function (col) {
+      col.setAttribute('draggable', 'true');  // Enable columns to be draggable.
+      col.addEventListener('dragstart', this.handleDragStart, false);
+      col.addEventListener('dragenter', this.handleDragEnter, false);
+      col.addEventListener('dragover', this.handleDragOver, false);
+      col.addEventListener('dragleave', this.handleDragLeave, false);
+      col.addEventListener('drop', this.handleDrop, false);
+      col.addEventListener('dragend', this.handleDragEnd, false);
+    });
+  })();
+</script>

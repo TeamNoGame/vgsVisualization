@@ -1,7 +1,7 @@
 function makeTraces() {
   console.log(vgsData);
   let rank = [], name = [], platform = [], year = [], genre = [], publisher = ["Activision", "Atari", "Bethesda Softworks", "Electronic Arts", "Microsoft Game Studios", "Nintendo", "Sega", "Sony Computer Entertainment", "SquareSoft", "Take-Two Interactive", "Ubisoft"], NAsales = [], EUsales = [],
-      JPsales = [], otherSales = [], globalSales = [];
+      JPsales = [], otherSales = [], globalSales = [], allPublishers = [], pubRankings = [];
 // yearly sales (graph1)
   let yearlyNA = [], yearlyEU = [], yearlyJP = [], yearlyOther = [], yearlyGlobal = [];
 // for x: year traces (graph1)
@@ -60,6 +60,15 @@ function makeTraces() {
     if(!platform.includes(row['Platform'])) platform.push(row['Platform']);
     // find all unique genres
     if(!genre.includes(row['Genre'])) genre.push(row['Genre']);
+    //find all unique publishers
+    if(!allPublishers.includes(row['Publisher'])) {
+      allPublishers.push(row['Publisher']);
+      pubRankings.push({Publisher: row['Publisher'], Global_Sales: 0});
+    }
+
+    pubRankings[allPublishers.indexOf(row['Publisher'])].Global_Sales += row['Global_Sales'];
+
+
     // make data for top 11 publishers
     if(publisher.includes(row['Publisher'])){
       publisherSales[publisher.indexOf(row['Publisher'])][row['Year'] - 1980] += (row['NA_Sales'] + row['EU_Sales'] + row['JP_Sales'] + row['Other_Sales'] + row['Global_Sales'])
@@ -83,11 +92,20 @@ function makeTraces() {
   platform.sort();
   //genre.sort();
   publisher.sort();
-  // console.log(platform, genre, publisher);
-  // console.log(flatYears);
-  // console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
-  // console.log('THIS IS THE TEST ARRAY', publisherSales);
 
+  pubRankings.sort(compare);
+
+  function compare(a, b){
+    if (a.Global_Sales < b.Global_Sales) return 1;
+    if (a.Global_Sales > b.Global_Sales) return -1;
+    return 0;
+  }
+
+  console.log(platform, genre, publisher);
+  console.log(flatYears);
+  console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
+  console.log('THIS IS THE TEST ARRAY', publisherSales);
+  console.log(allPublishers, pubRankings);
 
 
 //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);

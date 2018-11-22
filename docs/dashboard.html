@@ -82,5 +82,15 @@
     src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+
+<div id="stockLine"></div>
+
+<script src="js/readStocks.js"></script>
+<script type="text/javascript">
+  const company = localStorage.getItem("companyAcronym");
+  readStocks(company);
+
+</script>
+
 </body>
 </html>

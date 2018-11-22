@@ -1,5 +1,5 @@
 function makeTraces() {
-  console.log(vgsData);
+  // console.log(vgsData);
   let rank = [], name = [], platform = [], year = [], genre = [], publisher = ["Activision", "Atari", "Bethesda Softworks", "Electronic Arts", "Microsoft Game Studios", "Nintendo", "Sega", "Sony Computer Entertainment", "SquareSoft", "Take-Two Interactive", "Ubisoft"], NAsales = [], EUsales = [],
       JPsales = [], otherSales = [], globalSales = [], allPublishers = [], pubRankings = [];
 // yearly sales (graph1)
@@ -19,8 +19,9 @@ function makeTraces() {
     }
   }
 
-
-
+  // get publisher then pick 5 most popular games
+  let selectedPub = "Nintendo";
+  let topGames = [];
 
   // sales by genre
   let genreNA = [], genreEU = [], genreJP = [], genreOther = [], genreGlobal = [];
@@ -32,9 +33,16 @@ function makeTraces() {
     genreGlobal.push(0);
   }
 
+  console.log("vgsdata[0]: " + vgsData[0].Global_Sales);
+
   // parse stuff
   for (let i = 0; i < vgsData.length; i++) {
     const row = vgsData[i];
+
+    // for bar chart
+    if ((topGames.length < 10) && (row['Publisher'] == selectedPub)) {
+      topGames.push(row);
+    }
     /*
     // give every column its own array
     rank.push(row['Rank']);
@@ -101,19 +109,46 @@ function makeTraces() {
     return 0;
   }
 
-  console.log(platform, genre, publisher);
-  console.log(flatYears);
-  console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
-  console.log('THIS IS THE TEST ARRAY', publisherSales);
-  console.log(allPublishers, pubRankings);
+  // console.log(platform, genre, publisher);
+  // console.log(flatYears);
+  // console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
+  // console.log('THIS IS THE TEST ARRAY', publisherSales);
+  // console.log(allPublishers, pubRankings);
 
 
 //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
 
 //console.log(rank, name, platform, year, genre, publisher, NAsales, EUsales, JPsales, otherSales, globalSales);
 
-  buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
-  buildGraph2(flatYears, publisherSales);
+  // for (let i=0; i<topGamesNames.length; i++) {
+  for (let i=0; i<topGames.length; i++) {
+    // console.log("topGames[" + i + "].rank + name: " + topGamesNames[i] + " " + topGamesSales[i]);
+    console.log("topGames[" + i + "].name: " + topGames[i].Name);
+  }
+
+
+  buildBar(selectedPub, topGames);
+  // buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
+  // buildGraph2(flatYears, publisherSales);
+}
+
+function buildBar(selectedPub, topGames) {
+  let barTrace = {
+    x: topGames.map(x => x.Name),
+    y: topGames.map(x => x.Global_Sales),
+    // marker:{
+    //   color: ['rgba(204,204,204,1)', 'rgba(222,45,38,0.8)', 'rgba(204,204,204,1)', 'rgba(204,204,204,1)', 'rgba(204,204,204,1)']
+    // },
+    type: 'bar'
+  };
+
+  let data = [barTrace];
+
+  let layout = {
+    title: selectedPub + "\'s Top 10 Games"
+  };
+
+  Plotly.newPlot('bar', data, layout);
 }
 
 function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal) {

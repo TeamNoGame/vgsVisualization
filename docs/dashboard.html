@@ -83,12 +83,14 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
-<div id="stockLine"></div>
+
 
 <script src="js/readStocks.js"></script>
+<script src="js/drawStocks.js"></script>
+<div id="stockLine"></div>
 <script type="text/javascript">
   const company = localStorage.getItem("companyAcronym");
-  readStocks(company);
+  showHistory('stockLine', getRows(readStocks(company)));
 
 </script>
 

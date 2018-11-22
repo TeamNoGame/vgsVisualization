@@ -9,6 +9,7 @@ function readStocks(company) {
     csvData = dataCleaning(csvData);
     console.log("This is the cleaned data from the CSV", csvData);
   });
+  return csvData;
 }
 
 // Make every row into an object and add it to the array

@@ -1,5 +1,5 @@
 function makeTraces() {
-  console.log(vgsData);
+  // console.log(vgsData);
   let rank = [], name = [], platform = [], year = [], genre = [], publisher = ["Activision", "Atari", "Bethesda Softworks", "Electronic Arts", "Microsoft Game Studios", "Nintendo", "Sega", "Sony Computer Entertainment", "SquareSoft", "Take-Two Interactive", "Ubisoft"], NAsales = [], EUsales = [],
       JPsales = [], otherSales = [], globalSales = [], allPublishers = [], pubRankings = [];
 // yearly sales (graph1)
@@ -121,31 +121,31 @@ function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearl
     x: flatYears,
     y: yearlyNA,
     name: 'NA Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const EUtrace = {
     x: flatYears,
     y: yearlyEU,
     name: 'EU Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const JPtrace = {
     x: flatYears,
     y: yearlyJP,
     name: 'JP Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const otherTrace = {
     x: flatYears,
     y: yearlyOther,
     name: 'Other Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const globalTrace = {
     x: flatYears,
     y: yearlyGlobal,
     name: 'Global Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
   // console.log(data);

@@ -54,14 +54,40 @@
   /* Extra large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
   }
+
+  body {
+    font-family: Sans-serif;
+    font-size: 11px;
+  }
+
+  .slice {
+    cursor: pointer;
+  }
+
+  .slice .main-arc {
+    stroke: #fff;
+    stroke-width: 1px;
+  }
+
+  .slice .hidden-arc {
+    fill: none;
+  }
+
+  .slice text {
+    pointer-events: none;
+    dominant-baseline: middle;
+    text-anchor: middle;
+  }
 </style>
 <body onload="readFiles();">
-<div>
+<div id="gameDashboard">
   <h1 id="vgdashtitle" style="text-align: center" class="display-1"></h1>
   <hr>
   <div id="stockLine"></div>
 </div>
+<script src='https://d3js.org/d3.v4.min.js'></script>
 <script src="js/dataReading.js"></script>
+<script src="js/sunburst.js"></script>
 <script src="js/readStocks.js"></script>
 <script src="js/drawStocks.js"></script>
 
@@ -71,6 +97,56 @@
     document.getElementById('vgdashtitle').innerText = localStorage.getItem("chosenCompany") + ' Dashboard';
     console.log("This is the data", companyStockData);
 
+    var genres = [];
+    var regions = ['Other_Sales', 'EU_Sales', 'NA_Sales', 'JP_Sales'];
+    var genreSales = [];
+    var regionSales = [];
+    var genreRegionSales = {
+      name: localStorage.getItem("chosenCompany"),
+      children: []
+    };
+
+    for (let i = 0; i < vgsData.length; i++) {
+      genres.push(vgsData[i].Genre);
+    }
+    genres = [... new Set(genres)];
+    genres.pop();
+    console.log(vgsData);
+    console.log(genres);
+    for (let i = 0; i < genres.length; i++) {
+      genreRegionSales.children.push({
+        name: genres[i],
+        children: [
+          {
+            name: 'NA',
+            size: 0
+          },
+          {
+            name: 'JP',
+            size: 0
+          },
+          {
+            name: 'EU',
+            size: 0
+          },
+          {
+            name: 'OTH',
+            size: 0
+          }
+        ]
+      });
+    }
+    for (let i = 0; i < vgsData.length; i++) {
+      for (let j = 0; j < genreRegionSales.children.length; j++) {
+        if (vgsData[i].Genre == genreRegionSales.children[j].name && vgsData[i].Publisher == localStorage.getItem("chosenCompany")) {
+          genreRegionSales.children[j].children[0].size += parseFloat(vgsData[i].NA_Sales);
+          genreRegionSales.children[j].children[1].size += parseFloat(vgsData[i].JP_Sales);
+          genreRegionSales.children[j].children[2].size += parseFloat(vgsData[i].EU_Sales);
+          genreRegionSales.children[j].children[3].size += parseFloat(vgsData[i].Other_Sales);
+        }
+      }
+    }
+    newSunBurst(genreRegionSales);
   }
 </script>
 <script src="js/traceMaker.js"></script>

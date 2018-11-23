@@ -18,84 +18,84 @@ function readFiles() {
     ATVI = txt;
   }).done(function () {
     ATVI = dataCleaning(ATVI);
-    console.log(ATVI)
+    // console.log(ATVI)
   });
 
   jQuery.get('./data/CCOEY.csv', function (txt) {
     CCOEY = txt;
   }).done(function () {
     CCOEY = dataCleaning(CCOEY);
-    console.log(CCOEY)
+    // console.log(CCOEY)
   });
 
   jQuery.get('./data/EA.csv', function (txt) {
     EA = txt;
   }).done(function () {
     EA = dataCleaning(EA);
-    console.log(EA)
+    // console.log(EA)
   });
 
   jQuery.get('./data/KNMCY.csv', function (txt) {
     KNMCY = txt;
   }).done(function () {
     KNMCY = dataCleaning(KNMCY);
-    console.log(KNMCY)
+    // console.log(KNMCY)
   });
 
   jQuery.get('./data/MSFT.csv', function (txt) {
     MSFT = txt;
   }).done(function () {
     MSFT = dataCleaning(MSFT);
-    console.log(MSFT)
+    // console.log(MSFT)
   });
 
   jQuery.get('./data/NTDOY.csv', function (txt) {
     NTDOY = txt;
   }).done(function () {
     NTDOY = dataCleaning(NTDOY);
-    console.log(NTDOY)
+    // console.log(NTDOY)
   });
 
   jQuery.get('./data/SEGA.csv', function (txt) {
     SEGA = txt;
   }).done(function () {
     SEGA = dataCleaning(SEGA);
-    console.log(SEGA)
+    // console.log(SEGA)
   });
 
   jQuery.get('./data/SNE.csv', function (txt) {
     SNE = txt;
   }).done(function () {
     SNE = dataCleaning(SNE);
-    console.log(SNE)
+    // console.log(SNE)
   });
 
   jQuery.get('./data/SQNXF.csv', function (txt) {
     SQNXF = txt;
   }).done(function () {
     SQNXF = dataCleaning(SQNXF);
-    console.log(SQNXF)
+    // console.log(SQNXF)
   });
 
   jQuery.get('./data/THQN-B.ST.csv', function (txt) {
     THQN = txt;
   }).done(function () {
     THQN = dataCleaning(THQN);
-    console.log(THQN)
+    // console.log(THQN)
   });
 
   jQuery.get('./data/TTWO.csv', function (txt) {
     TTWO = txt;
   }).done(function () {
     TTWO = dataCleaning(TTWO);
-    console.log(TTWO)
+    // console.log(TTWO)
   });
 
   jQuery.get('./data/UBI.PA.csv', function (txt) {
     UBIPA = txt;
   }).done(function () {
     UBIPA = dataCleaning(UBIPA);
-    console.log(UBIPA)
+    // console.log(UBIPA)
   });
 
 

@@ -54,17 +54,54 @@
   /* Extra large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
   }
+
+  body {
+    font-family: Sans-serif;
+    font-size: 11px;
+  }
+
+  .slice {
+    cursor: pointer;
+  }
+
+  .slice .main-arc {
+    stroke: #fff;
+    stroke-width: 1px;
+  }
+
+  .slice .hidden-arc {
+    fill: none;
+  }
+
+  .slice text {
+    pointer-events: none;
+    dominant-baseline: middle;
+    text-anchor: middle;
+  }
 </style>
 <body onload="readFiles();">
-<div>
+<div id="gameDashboard">
   <h1 id="vgdashtitle" style="text-align: center" class="display-1"></h1>
   <hr>
 </div>
+<script src='https://d3js.org/d3.v4.min.js'></script>
 <script src="js/dataReading.js"></script>
+<script src="js/sunburst.js"></script>
 <script type="text/javascript">
   function doneLoadingData() {
     // This is to get the value that was passed!
     document.getElementById('vgdashtitle').innerText = localStorage.getItem("chosenCompany") + ' Dashboard';
+    var genres;
+    var regions;
+    var genreSales;
+    var regionSales;
+    var genreRegionSales;
+
+    for (let i = 0; i < vgsData.length; i++) {
+      genres.push(vgsData[i].Genre);
+      regions.push(vgsData[i])
+    }
+    // newSunBurst('vgSunburstData.json');
   }
 </script>
 <script src="js/traceMaker.js"></script>

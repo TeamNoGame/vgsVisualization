@@ -101,11 +101,11 @@ function makeTraces() {
     return 0;
   }
 
-  console.log(platform, genre, publisher);
-  console.log(flatYears);
-  console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
-  console.log('THIS IS THE TEST ARRAY', publisherSales);
-  console.log(allPublishers, pubRankings);
+  // console.log(platform, genre, publisher);
+  // console.log(flatYears);
+  // console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
+  // console.log('THIS IS THE TEST ARRAY', publisherSales);
+  // console.log(allPublishers, pubRankings);
 
 
 //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);
@@ -121,31 +121,31 @@ function buildGraph1(flatYears, yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearl
     x: flatYears,
     y: yearlyNA,
     name: 'NA Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const EUtrace = {
     x: flatYears,
     y: yearlyEU,
     name: 'EU Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const JPtrace = {
     x: flatYears,
     y: yearlyJP,
     name: 'JP Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const otherTrace = {
     x: flatYears,
     y: yearlyOther,
     name: 'Other Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const globalTrace = {
     x: flatYears,
     y: yearlyGlobal,
     name: 'Global Sales',
-    type: 'bar'
+    type: 'bar',
   };
   const data = [NAtrace, EUtrace, JPtrace, otherTrace, globalTrace];
   // console.log(data);

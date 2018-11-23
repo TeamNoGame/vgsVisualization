@@ -1,0 +1,73 @@
+{
+  "name": "Sony",
+  "children": [
+    {
+      "name": "RTS",
+      "children": [
+        {
+          "name": "NA",
+          "size": "200"
+        },
+        {
+          "name": "EU",
+          "size": "200"
+        },
+        {
+          "name": "JP",
+          "size": "300"
+        }
+      ]
+    },
+    {
+      "name": "RPG",
+      "children": [
+        {
+          "name": "NA",
+          "size": "500"
+        },
+        {
+          "name": "EU",
+          "size": "400"
+        },
+        {
+          "name": "JP",
+          "size": "300"
+        }
+      ]
+    },
+    {
+      "name": "Shooter",
+      "children": [
+        {
+          "name": "NA",
+          "size": "200"
+        },
+        {
+          "name": "EU",
+          "size": "200"
+        },
+        {
+          "name": "JP",
+          "size": "300"
+        }
+      ]
+    },
+    {
+      "name": "Horror",
+      "children": [
+        {
+          "name": "NA",
+          "size": "500"
+        },
+        {
+          "name": "EU",
+          "size": "400"
+        },
+        {
+          "name": "JP",
+          "size": "300"
+        }
+      ]
+    }
+  ]
+}

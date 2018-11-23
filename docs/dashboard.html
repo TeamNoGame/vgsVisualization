@@ -91,17 +91,56 @@
   function doneLoadingData() {
     // This is to get the value that was passed!
     document.getElementById('vgdashtitle').innerText = localStorage.getItem("chosenCompany") + ' Dashboard';
-    var genres;
-    var regions;
-    var genreSales;
-    var regionSales;
-    var genreRegionSales;
+    var genres = [];
+    var regions = ['Other_Sales', 'EU_Sales', 'NA_Sales', 'JP_Sales'];
+    var genreSales = [];
+    var regionSales = [];
+    var genreRegionSales = {
+      name: localStorage.getItem("chosenCompany"),
+      children: []
+    };
 
     for (let i = 0; i < vgsData.length; i++) {
       genres.push(vgsData[i].Genre);
-      regions.push(vgsData[i])
     }
-    // newSunBurst('vgSunburstData.json');
+    genres = [... new Set(genres)];
+    genres.pop();
+    console.log(vgsData);
+    console.log(genres);
+    for (let i = 0; i < genres.length; i++) {
+      genreRegionSales.children.push({
+        name: genres[i],
+        children: [
+          {
+            name: 'NA',
+            size: 0
+          },
+          {
+            name: 'JP',
+            size: 0
+          },
+          {
+            name: 'EU',
+            size: 0
+          },
+          {
+            name: 'OTH',
+            size: 0
+          }
+        ]
+      });
+    }
+    for (let i = 0; i < vgsData.length; i++) {
+      for (let j = 0; j < genreRegionSales.children.length; j++) {
+        if (vgsData[i].Genre == genreRegionSales.children[j].name && vgsData[i].Publisher == localStorage.getItem("chosenCompany")) {
+          genreRegionSales.children[j].children[0].size += parseInt(vgsData[i].NA_Sales);
+          genreRegionSales.children[j].children[1].size += parseInt(vgsData[i].JP_Sales);
+          genreRegionSales.children[j].children[2].size += parseInt(vgsData[i].EU_Sales);
+          genreRegionSales.children[j].children[3].size += parseInt(vgsData[i].Other_Sales);
+        }
+      }
+    }
+    newSunBurst(genreRegionSales);
   }
 </script>
 <script src="js/traceMaker.js"></script>

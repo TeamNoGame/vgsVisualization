@@ -1,7 +1,24 @@
-function newSunBurst(jsonFileName) {
+function newSunBurst(objectName) {
   var showGraphs = document.getElementById('gameDashboard');
   var graphDiv = document.createElement('div');
   var titleDiv = document.createElement('div');
+  var sunBurstTitle = document.createElement('h1');
+  var content = document.createTextNode('Sunburst Graph');
+  var root =
+
+  /*
+  titleDiv.style = {
+    paddingBottom: "7px",
+    textAlign: "center",
+    fontFamily: "Open Sans, verdana, arial, sans-serif",
+    fontSize: "17px",
+    fill: "rgb(68, 68, 68)",
+    opacity: "1",
+    fontWeight: "normal",
+    whiteSpace: "pre"
+  };
+   */
+
   titleDiv.style.paddingBottom = "7px";
   titleDiv.style.textAlign = "center";
   titleDiv.style.fontFamily = "Open Sans, verdana, arial, sans-serif";
@@ -10,8 +27,7 @@ function newSunBurst(jsonFileName) {
   titleDiv.style.opacity = "1";
   titleDiv.style.fontWeight = "normal";
   titleDiv.style.whiteSpace = "pre";
-  var sunBurstTitle = document.createElement('h1');
-  var content = document.createTextNode('Sunburst Graph');
+
   titleDiv.append(content);
   graphDiv.appendChild(titleDiv);
 
@@ -58,7 +74,6 @@ function newSunBurst(jsonFileName) {
     const deltaAngle = x(d.x1) - x(d.x0);
     const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
     const perimeter = r * deltaAngle;
-
     return d.data.name.length * CHAR_SPACE < perimeter;
   };
 
@@ -68,57 +83,58 @@ function newSunBurst(jsonFileName) {
       .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
       .on('click', () => focusOn()); // Reset zoom on canvas click
 
-  d3.json('../docs/data/' + jsonFileName, (error, root) => {
-    // ../../../data/test.json
-    //https://gist.githubusercontent.com/mbostock/4348373/raw/85f18ac90409caa5529b32156aa6e71cf985263f/flare.json
-    if (error) throw error;
+  root = d3.hierarchy(objectName);
+  root.sum(d => d.size);
 
-    root = d3.hierarchy(root);
-    root.sum(d => d.size);
+  const slice = svg.selectAll('g.slice')
+      .data(partition(root).descendants());
 
-    const slice = svg.selectAll('g.slice')
-        .data(partition(root).descendants());
+  slice.exit().remove();
 
-    slice.exit().remove();
+  const newSlice = slice.enter()
+      .append('g').attr('class', 'slice')
+      .on('click', d => {
+        d3.event.stopPropagation();
+        focusOn(d);
+      });
 
-    const newSlice = slice.enter()
-        .append('g').attr('class', 'slice')
-        .on('click', d => {
-          d3.event.stopPropagation();
-          focusOn(d);
-        });
+  newSlice.append('title')
+      .text(d => d.data.name + '\n' + formatNumber(d.value));
 
-    newSlice.append('title')
-        .text(d => d.data.name + '\n' + formatNumber(d.value));
+  newSlice.append('path')
+      .attr('class', 'main-arc')
+      .style('fill', d => color((d.children ? d : d.parent).data.name))
+      .attr('d', arc);
 
-    newSlice.append('path')
-        .attr('class', 'main-arc')
-        .style('fill', d => color((d.children ? d : d.parent).data.name))
-        .attr('d', arc);
+  newSlice.append('path')
+      .attr('class', 'hidden-arc')
+      .attr('id', (_, i) => `hiddenArc${i}`)
+      .attr('d', middleArcLine);
 
-    newSlice.append('path')
-        .attr('class', 'hidden-arc')
-        .attr('id', (_, i) => `hiddenArc${i}`)
-        .attr('d', middleArcLine);
+  const text = newSlice.append('text')
+      .attr('display', d => textFits(d) ? null : 'none');
 
-    const text = newSlice.append('text')
-        .attr('display', d => textFits(d) ? null : 'none');
+  // Add white contour
+  text.append('textPath')
+      .attr('startOffset','50%')
+      .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
+      .text(d => d.data.name + ':' + formatNumber(d.value))
+      .style('fill', 'none')
+      .style('stroke', '#fff')
+      .style('stroke-width', 4)
+      .style('stroke-linejoin', 'round');
 
-    // Add white contour
-    text.append('textPath')
-        .attr('startOffset','50%')
-        .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
-        .text(d => d.data.name + ':' + formatNumber(d.value))
-        .style('fill', 'none')
-        .style('stroke', '#fff')
-        .style('stroke-width', 10)
-        .style('stroke-linejoin', 'round');
+  text.append('textPath')
+      .attr('startOffset','50%')
+      .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
+      .text(d => d.data.name + ':' + formatNumber(d.value));
 
-    text.append('textPath')
-        .attr('startOffset','50%')
-        .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
-        .text(d => d.data.name + ':' + formatNumber(d.value));
-  });
+  // d3.json('../docs/data/' + jsonFileName, (error, root) => {
+  //   // ../../../data/test.json
+  //   //https://gist.githubusercontent.com/mbostock/4348373/raw/85f18ac90409caa5529b32156aa6e71cf985263f/flare.json
+  //   if (error) throw error;
+  //
+  // });
 
   function focusOn(d = { x0: 0, x1: 1, y0: 0, y1: 1 }) {
     // Reset to top-level if no data point specified
@@ -150,6 +166,6 @@ function newSunBurst(jsonFileName) {
           })
     }
   }
-  graphDiv.style.fontSize = '150%';
+  graphDiv.style.fontSize = '1vw';
   showGraphs.appendChild(graphDiv);
 }

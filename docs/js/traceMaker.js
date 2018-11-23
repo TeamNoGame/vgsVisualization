@@ -1,5 +1,5 @@
 function makeTraces() {
-  console.log(vgsData);
+  // console.log(vgsData);
   let rank = [], name = [], platform = [], year = [], genre = [], publisher = ["Activision", "Atari", "Bethesda Softworks", "Electronic Arts", "Microsoft Game Studios", "Nintendo", "Sega", "Sony Computer Entertainment", "SquareSoft", "Take-Two Interactive", "Ubisoft"], NAsales = [], EUsales = [],
       JPsales = [], otherSales = [], globalSales = [], allPublishers = [], pubRankings = [];
 // yearly sales (graph1)

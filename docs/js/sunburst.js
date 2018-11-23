@@ -35,7 +35,8 @@ function newSunBurst(objectName) {
       height = window.innerHeight,
       maxRadius = (Math.min(width, height) / 2) - 5;
 
-  const formatNumber = d3.format(',d');
+  // const formatNumber = d3.format(',d');
+  const formatNumber = d3.format('.2f');
 
   const x = d3.scaleLinear()
       .range([0, 2 * Math.PI])
@@ -69,8 +70,8 @@ function newSunBurst(objectName) {
   };
 
   const textFits = d => {
+    // const CHAR_SPACE = 6;
     const CHAR_SPACE = 6;
-
     const deltaAngle = x(d.x1) - x(d.x0);
     const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
     const perimeter = r * deltaAngle;

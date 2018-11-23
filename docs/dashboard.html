@@ -133,10 +133,10 @@
     for (let i = 0; i < vgsData.length; i++) {
       for (let j = 0; j < genreRegionSales.children.length; j++) {
         if (vgsData[i].Genre == genreRegionSales.children[j].name && vgsData[i].Publisher == localStorage.getItem("chosenCompany")) {
-          genreRegionSales.children[j].children[0].size += parseInt(vgsData[i].NA_Sales);
-          genreRegionSales.children[j].children[1].size += parseInt(vgsData[i].JP_Sales);
-          genreRegionSales.children[j].children[2].size += parseInt(vgsData[i].EU_Sales);
-          genreRegionSales.children[j].children[3].size += parseInt(vgsData[i].Other_Sales);
+          genreRegionSales.children[j].children[0].size += parseFloat(vgsData[i].NA_Sales);
+          genreRegionSales.children[j].children[1].size += parseFloat(vgsData[i].JP_Sales);
+          genreRegionSales.children[j].children[2].size += parseFloat(vgsData[i].EU_Sales);
+          genreRegionSales.children[j].children[3].size += parseFloat(vgsData[i].Other_Sales);
         }
       }
     }

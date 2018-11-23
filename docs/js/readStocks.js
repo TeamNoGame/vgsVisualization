@@ -3,7 +3,6 @@ let csvData = '';
 
 // TODO fix date parsing
 function readStocks(company) {
-  console.log(company);
   jQuery.get(`./data/${company}.csv`, function (txt) {
     companyStockData = txt;
   }).done(function () {
@@ -49,7 +48,8 @@ function deString(stringData){
     let row = stringData[i];
     row['Adj Close'] = parseFloat(row['Adj Close']);
     row['Close'] = parseFloat(row['Close']);
-    row['Date'] = new Date(row['Date']);
+    const date = new Date(row['Date']);
+    row['Date'] = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
     row['Adj Close'] = parseFloat(row['Adj Close']);
     row['High'] = parseFloat(row['High']);
     row['Low'] = parseFloat(row['Low']);

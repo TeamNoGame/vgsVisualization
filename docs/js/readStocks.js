@@ -3,13 +3,13 @@ let csvData = '';
 
 // TODO fix date parsing
 function readStocks(company) {
+  console.log(company);
   jQuery.get(`./data/${company}.csv`, function (txt) {
     csvData = txt;
   }).done(function () {
     csvData = dataCleaning(csvData);
-    console.log("This is the cleaned data from the CSV", csvData);
+    return csvData;
   });
-  return csvData;
 }
 
 // Make every row into an object and add it to the array

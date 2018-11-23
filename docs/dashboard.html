@@ -90,7 +90,9 @@
 <div id="stockLine"></div>
 <script type="text/javascript">
   const company = localStorage.getItem("companyAcronym");
-  showHistory('stockLine', getRows(readStocks(company)));
+  readStocks(company);
+  const data = getRows(csvData);
+  console.log("This is the data", data)
 
 </script>
 

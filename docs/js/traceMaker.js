@@ -101,11 +101,11 @@ function makeTraces() {
     return 0;
   }
 
-  console.log(platform, genre, publisher);
-  console.log(flatYears);
-  console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
-  console.log('THIS IS THE TEST ARRAY', publisherSales);
-  console.log(allPublishers, pubRankings);
+  // console.log(platform, genre, publisher);
+  // console.log(flatYears);
+  // console.log(genreNA, genreEU, genreJP, genreOther, genreGlobal);
+  // console.log('THIS IS THE TEST ARRAY', publisherSales);
+  // console.log(allPublishers, pubRankings);
 
 
 //console.log(yearlyNA, yearlyEU, yearlyJP, yearlyOther, yearlyGlobal);

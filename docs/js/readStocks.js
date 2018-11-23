@@ -49,7 +49,7 @@ function deString(stringData){
     row['Adj Close'] = parseFloat(row['Adj Close']);
     row['Close'] = parseFloat(row['Close']);
     const date = new Date(row['Date']);
-    row['Date'] = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+    row['Date'] = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`;
     row['Adj Close'] = parseFloat(row['Adj Close']);
     row['High'] = parseFloat(row['High']);
     row['Low'] = parseFloat(row['Low']);

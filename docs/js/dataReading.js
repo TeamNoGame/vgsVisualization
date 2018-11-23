@@ -1,4 +1,6 @@
 var vgsData = "";
+var companyStockData;
+
 function readFiles() {
   jQuery.get('./data/vgsales.csv', function (txt) {
     vgsData = txt;
@@ -17,6 +19,7 @@ function readFiles() {
     doneLoadingData();
     makeTraces();
   });
+  readStocks(localStorage.getItem('companyAcronym'));
 }
 
 function dataCleaning(dirtyData) {

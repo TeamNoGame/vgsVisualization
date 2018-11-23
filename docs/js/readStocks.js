@@ -5,10 +5,11 @@ let csvData = '';
 function readStocks(company) {
   console.log(company);
   jQuery.get(`./data/${company}.csv`, function (txt) {
-    csvData = txt;
+    companyStockData = txt;
   }).done(function () {
-    csvData = dataCleaning(csvData);
-    return csvData;
+    companyStockData = dataCleaning(companyStockData);
+    companyStockData = getRows(companyStockData);
+    showHistory(company, companyStockData);
   });
 }
 

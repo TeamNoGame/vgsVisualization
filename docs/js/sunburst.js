@@ -4,20 +4,7 @@ function newSunBurst(objectName) {
   var titleDiv = document.createElement('div');
   var sunBurstTitle = document.createElement('h1');
   var content = document.createTextNode('Sunburst Graph');
-  var root =
-
-  /*
-  titleDiv.style = {
-    paddingBottom: "7px",
-    textAlign: "center",
-    fontFamily: "Open Sans, verdana, arial, sans-serif",
-    fontSize: "17px",
-    fill: "rgb(68, 68, 68)",
-    opacity: "1",
-    fontWeight: "normal",
-    whiteSpace: "pre"
-  };
-   */
+  var root = objectName;
 
   titleDiv.style.paddingBottom = "7px";
   titleDiv.style.textAlign = "center";
@@ -84,7 +71,7 @@ function newSunBurst(objectName) {
       .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
       .on('click', () => focusOn()); // Reset zoom on canvas click
 
-  root = d3.hierarchy(objectName);
+  root = d3.hierarchy(root);
   root.sum(d => d.size);
 
   const slice = svg.selectAll('g.slice')

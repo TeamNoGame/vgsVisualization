@@ -29,7 +29,7 @@ function makeTraces() {
     genreGlobal.push(0);
   }
 
-  console.log("vgsdata[0]: " + vgsData[0].Global_Sales);
+  // console.log("vgsdata[0]: " + vgsData[0].Global_Sales);
 
   // parse stuff
   for (let i = 0; i < vgsData.length; i++) {
@@ -157,8 +157,12 @@ function getTopGames() {
   }
 
   for (let i=0; i<10; i++) {
+    console.log('yo');
+    console.log(topGames);
+    console.log(topGames[i].Platform);
     localStorage.setItem("topGame" + i, topGames[i].Name);
     localStorage.setItem("topGameGenre" + i, topGames[i].Genre);
+    // localStorage.setItem("topGamePlatform" + i, topGames[i].Platform);
     localStorage.setItem("topGameSales" + i, topGames[i].Global_Sales);
     localStorage.setItem("topGameYear" + i, topGames[i].Year);
     buildBar(chosenCompany, topGames, i);

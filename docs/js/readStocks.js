@@ -9,6 +9,46 @@ function readStocks(company) {
     companyStockData = dataCleaning(companyStockData);
     companyStockData = getRows(companyStockData);
     showHistory(company, companyStockData);
+    switch(company){
+      case 'ATVI':
+        document.getElementById('summaryText').innerHTML = `Activision generally succeeds with action games. It is their most-sold genre with 299.78M copies sold. They are most popular in _____.`;
+        break;
+      case 'CCOEY':
+        document.getElementById('summaryText').innerHTML = `Capcom generally succeeds with action games. It is their most-sold genre with 85.11M copies sold. They are most popular in _____.`;
+        break;
+      case 'EA':
+        document.getElementById('summaryText').innerHTML = `EA generally succeeds with sports games. It is their most-sold genre with 479.52M copies sold. They are most popular in _____.`;
+        break;
+      case 'KNMCY':
+        document.getElementById('summaryText').innerHTML = `Konami generally succeeds with sports games. It is their most-sold genre with 98.95M copies sold. They are most popular in _____.`;
+        break;
+      case 'MSFT':
+        document.getElementById('summaryText').innerHTML = `Microsoft generally succeeds with shooter games. It is their most-sold genre with 95.44 copies sold. They are most popular in _____.
+`;
+        break;
+      case 'NMBD':
+        document.getElementById('summaryText').innerHTML = `Namco Bandai generally succeeds with fighting and role-playing games. These are their most-sold genres with 61.26M and 53.79M copies sold respectively. They are most popular in _____. `;
+        break;
+      case 'NTDOY':
+        document.getElementById('summaryText').innerHTML = `Nintendo generally succeeds with ALL games. They have sold a total of 1786.36M copies of all of their games as of the collection of this data. They are most popular in _____. They are well-known for the Mario franchise.`;
+        break;
+      case 'SEGA':
+        document.getElementById('summaryText').innerHTML = `SEGA generally succeeds with sports games. It is their most-sold genre with 71.68M copies sold. They are most popular in _____. `;
+        break;
+      case 'SNE':
+        document.getElementById('summaryText').innerHTML = `Sony generally succeeds with racing games. It is their most-sold genre with 110.56M copies sold. They are most popular in _____. `;
+        break;
+      case 'THQN':
+        document.getElementById('summaryText').innerHTML = `Activision generally succeeds with action games. It is their most-sold genre with 299.78M copies sold. They are most popular in _____.`;
+        break;
+      case 'TTWO':
+        document.getElementById('summaryText').innerHTML = `Take-two generally succeeds with action games. It is their most-sold genre with 211.11M copies sold. They are most popular in _____. `;
+        break;
+      case 'UBIPA':
+        document.getElementById('summaryText').innerHTML = `Ubisoft generally succeeds with action games. It is their most-sold genre with 146.96M copies sold. They are most popular in _____. `;
+        break;
+
+    }
   });
 }
 

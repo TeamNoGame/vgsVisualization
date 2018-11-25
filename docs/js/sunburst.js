@@ -9,7 +9,7 @@ function newSunBurst(objectName) {
   titleDiv.style.paddingBottom = "7px";
   titleDiv.style.textAlign = "center";
   titleDiv.style.fontFamily = "Open Sans, verdana, arial, sans-serif";
-  titleDiv.style.fontSize = "17px";
+  titleDiv.style.fontSize = "40%";
   titleDiv.style.fill = "rgb(68, 68, 68)";
   titleDiv.style.opacity = "1";
   titleDiv.style.fontWeight = "normal";
@@ -18,8 +18,8 @@ function newSunBurst(objectName) {
   titleDiv.append(content);
   graphDiv.appendChild(titleDiv);
 
-  const width = window.innerWidth,
-      height = window.innerHeight,
+  const width = window.innerWidth + 5000,
+      height = window.innerHeight + 5000,
       maxRadius = (Math.min(width, height) / 2) - 5;
 
   // const formatNumber = d3.format(',d');
@@ -115,7 +115,7 @@ function newSunBurst(objectName) {
       .text(d => d.data.name + ':' + formatNumber(d.value))
       .style('fill', 'none')
       .style('stroke', '#fff')
-      .style('stroke-width', 4)
+      .style('stroke-width', 20)
       .style('stroke-linejoin', 'round')
 
   text.append('textPath')
@@ -168,6 +168,6 @@ function newSunBurst(objectName) {
     // d3.event.stopPropagation();
     // d3.select(this).style('fill', 'black').style('font-size', '100%');
   }
-  graphDiv.style.fontSize = '150%';
+  graphDiv.style.fontSize = '15vw';
   showGraphs.appendChild(graphDiv);
 }

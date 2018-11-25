@@ -157,9 +157,6 @@ function getTopGames() {
   }
 
   for (let i=0; i<10; i++) {
-    console.log('yo');
-    console.log(topGames);
-    console.log(topGames[i].Platform);
     localStorage.setItem("topGame" + i, topGames[i].Name);
     localStorage.setItem("topGameGenre" + i, topGames[i].Genre);
     // localStorage.setItem("topGamePlatform" + i, topGames[i].Platform);

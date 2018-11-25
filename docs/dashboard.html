@@ -58,21 +58,12 @@
   @media (min-width: 1200px) {
   }
 
-  #card-carousel {
-    width: 50%;
-    background-color: #7DBADF;
-  }
-
-  .card {
-    width: 100%
-  }
-
-
   body {
     font-family: Sans-serif;
     font-size: 11px;
   }
 
+  /* Sunburst */
   .slice {
     cursor: pointer;
   }
@@ -91,12 +82,19 @@
     dominant-baseline: middle;
     text-anchor: middle;
   }
+
+  /*Card Carousel */
+  #card-carousel {
+    width: 50%;
+    background-color: #7DBADF;
+  }
+
+  .card {
+    width: 100%
+  }
 </style>
 
 <body onload="readFiles();">
-
-
-
 <div id="gameDashboard">
   <h1 id="vgdashtitle" style="text-align: center" class="display-1"></h1>
   <hr>
@@ -443,6 +441,7 @@
 <script src="js/sunburst.js"></script>
 <script src="js/readStocks.js"></script>
 <script src="js/drawStocks.js"></script>
+<script src="js/traceMaker.js"></script>
 
 <script type="text/javascript">
   function doneLoadingData() {
@@ -464,7 +463,7 @@
 
     // Card Flip
     $('.flip').find('.card-btn').click(function () {
-        $(this).closest('.card').toggleClass('flipped');
+      $(this).closest('.card').toggleClass('flipped');
     });
 
     // Sunburst
@@ -520,7 +519,6 @@
     newSunBurst(genreRegionSales);
   }
 </script>
-<script src="js/traceMaker.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script

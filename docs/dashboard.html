@@ -85,357 +85,377 @@
 
   /*Card Carousel */
   #card-carousel {
-    width: 50%;
+    width: 100%;
+    height: 100%;
     background-color: #7DBADF;
   }
-
   .card {
     width: 100%
   }
 </style>
 
 <body onload="readFiles();">
-<div id="gameDashboard">
+<div>
   <h1 id="vgdashtitle" style="text-align: center" class="display-1"></h1>
   <hr>
-  <div id="stockLine"></div>
-  <div id="summary"><span id="summaryText"></span></div>
-</div>
-
-<!-- carousel -->
-<div id="card-carousel">
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <!-- #1 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame0">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank0"></li>
-                <li class="list-group-item" id="topGameGenre0"></li>
-                <!--<li class="list-group-item" id="topGamePlatform0"></li>-->
-                <li class="list-group-item" id="topGameSales0"></li>
-                <li class="list-group-item" id="topGameYear0"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar0"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #2 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame1">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank1"></li>
-                <li class="list-group-item" id="topGameGenre1"></li>
-                <!--<li class="list-group-item" id="topGamePlatform1"></li>-->
-                <li class="list-group-item" id="topGameSales1"></li>
-                <li class="list-group-item" id="topGameYear1"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar1"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #3 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame2">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank2"></li>
-                <li class="list-group-item" id="topGameGenre2"></li>
-                <!--<li class="list-group-item" id="topGamePlatform2"></li>-->
-                <li class="list-group-item" id="topGameSales2"></li>
-                <li class="list-group-item" id="topGameYear2"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar2"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #4 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame3">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank3"></li>
-                <li class="list-group-item" id="topGameGenre3"></li>
-                <!--<li class="list-group-item" id="topGamePlatform3"></li>-->
-                <li class="list-group-item" id="topGameSales3"></li>
-                <li class="list-group-item" id="topGameYear3"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar3"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #5 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame4">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank4"></li>
-                <li class="list-group-item" id="topGameGenre4"></li>
-                <!--<li class="list-group-item" id="topGamePlatform4"></li>-->
-                <li class="list-group-item" id="topGameSales4"></li>
-                <li class="list-group-item" id="topGameYear4"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar4"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #6 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame5">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank5"></li>
-                <li class="list-group-item" id="topGameGenre5"></li>
-                <!--<li class="list-group-item" id="topGamePlatform5"></li>-->
-                <li class="list-group-item" id="topGameSales5"></li>
-                <li class="list-group-item" id="topGameYear5"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar5"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #7 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame6">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank6"></li>
-                <li class="list-group-item" id="topGameGenre6"></li>
-                <!--<li class="list-group-item" id="topGamePlatform6"></li>-->
-                <li class="list-group-item" id="topGameSales6"></li>
-                <li class="list-group-item" id="topGameYear6"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar6"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #8 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame7">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank7"></li>
-                <li class="list-group-item" id="topGameGenre7"></li>
-                <!--<li class="list-group-item" id="topGamePlatform7"></li>-->
-                <li class="list-group-item" id="topGameSales7"></li>
-                <li class="list-group-item" id="topGameYear7"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar7"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #9 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame8">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank8"></li>
-                <li class="list-group-item" id="topGameGenre8"></li>
-                <!--<li class="list-group-item" id="topGamePlatform8"></li>-->
-                <li class="list-group-item" id="topGameSales8"></li>
-                <li class="list-group-item" id="topGameYear8"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar8"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- #10 card -->
-        <div class="flip">
-          <div class="card">
-            <div class="face front">
-              <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title" id="topGame9">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="topGameRank9"></li>
-                <li class="list-group-item" id="topGameGenre9"></li>
-                <!--<li class="list-group-item" id="topGamePlatform9"></li>-->
-                <li class="list-group-item" id="topGameSales9"></li>
-                <li class="list-group-item" id="topGameYear9"></li>
-              </ul>
-              <div class="card-body">
-                <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
-              </div>
-            </div>
-            <div class="face back">
-              <div class="card-body">
-                <div id="bar9"></div>
-                <a class="btn card-btn btn-primary">Back to Game Details</a>
-              </div>
-            </div>
-          </div>
+  <div class="container-fluid" style="text-align: center">
+    <div class="row">
+      <div class="col">
+        <div id="summary">
+          <span id="summaryText" class="h4"></span>
         </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="row">
+      <div class="col">
+        <div id="stockLine"></div>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 3%">
+      <div class="col">
+        <div id="card-carousel">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <!-- #1 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame0">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank0"></li>
+                        <li class="list-group-item" id="topGameGenre0"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform0"></li>-->
+                        <li class="list-group-item" id="topGameSales0"></li>
+                        <li class="list-group-item" id="topGameYear0"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar0"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #2 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame1">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank1"></li>
+                        <li class="list-group-item" id="topGameGenre1"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform1"></li>-->
+                        <li class="list-group-item" id="topGameSales1"></li>
+                        <li class="list-group-item" id="topGameYear1"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar1"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #3 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame2">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank2"></li>
+                        <li class="list-group-item" id="topGameGenre2"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform2"></li>-->
+                        <li class="list-group-item" id="topGameSales2"></li>
+                        <li class="list-group-item" id="topGameYear2"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar2"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #4 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame3">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank3"></li>
+                        <li class="list-group-item" id="topGameGenre3"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform3"></li>-->
+                        <li class="list-group-item" id="topGameSales3"></li>
+                        <li class="list-group-item" id="topGameYear3"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar3"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #5 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame4">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank4"></li>
+                        <li class="list-group-item" id="topGameGenre4"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform4"></li>-->
+                        <li class="list-group-item" id="topGameSales4"></li>
+                        <li class="list-group-item" id="topGameYear4"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar4"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #6 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame5">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank5"></li>
+                        <li class="list-group-item" id="topGameGenre5"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform5"></li>-->
+                        <li class="list-group-item" id="topGameSales5"></li>
+                        <li class="list-group-item" id="topGameYear5"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar5"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #7 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame6">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank6"></li>
+                        <li class="list-group-item" id="topGameGenre6"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform6"></li>-->
+                        <li class="list-group-item" id="topGameSales6"></li>
+                        <li class="list-group-item" id="topGameYear6"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar6"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #8 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame7">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank7"></li>
+                        <li class="list-group-item" id="topGameGenre7"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform7"></li>-->
+                        <li class="list-group-item" id="topGameSales7"></li>
+                        <li class="list-group-item" id="topGameYear7"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar7"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #9 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame8">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank8"></li>
+                        <li class="list-group-item" id="topGameGenre8"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform8"></li>-->
+                        <li class="list-group-item" id="topGameSales8"></li>
+                        <li class="list-group-item" id="topGameYear8"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar8"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <!-- #10 card -->
+                <div class="flip">
+                  <div class="card">
+                    <div class="face front">
+                      <img class="card-img-top" src="images/Untitled.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title" id="topGame9">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                          card's
+                          content.</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="topGameRank9"></li>
+                        <li class="list-group-item" id="topGameGenre9"></li>
+                        <!--<li class="list-group-item" id="topGamePlatform9"></li>-->
+                        <li class="list-group-item" id="topGameSales9"></li>
+                        <li class="list-group-item" id="topGameYear9"></li>
+                      </ul>
+                      <div class="card-body">
+                        <a class="btn card-btn btn-primary">Compare to other bestsellers</a>
+                      </div>
+                    </div>
+                    <div class="face back">
+                      <div class="card-body">
+                        <div id="bar9"></div>
+                        <a class="btn card-btn btn-primary">Back to Game Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div id="gameDashboard"></div>
+      </div>
+    </div>
   </div>
+  <div ></div>
 </div>
+
+<!-- carousel -->
 
 <script src='https://d3js.org/d3.v4.min.js'></script>
 <script src="js/dataReading.js"></script>
@@ -472,6 +492,7 @@
     var regions = ['Other_Sales', 'EU_Sales', 'NA_Sales', 'JP_Sales'];
     var genreSales = [];
     var regionSales = [];
+    var publisher = [];
     var genreRegionSales = {
       name: localStorage.getItem("chosenCompany"),
       children: []
@@ -517,6 +538,12 @@
         }
       }
     }
+    // for (let i = 0; i < vgsData.length; i++) {
+    //   publisher.push(vgsData[i].Publisher);
+    // }
+    // publisher = [... new Set(publisher)];
+    // publisher = publisher.sort();
+    // console.log(publisher.includes('Namco Bandai Games'));
     newSunBurst(genreRegionSales);
   }
 </script>

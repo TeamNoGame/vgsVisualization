@@ -15,5 +15,10 @@ function showHistory(name, csv){
     y: csv.closeValues,
     mode: 'line'
   };
-  Plotly.newPlot('stockLine', [data], { title: `${name} Stock History`, responsive: true});
+
+  const layout = {
+    title: `${name} Stock History`,
+  };
+
+  Plotly.newPlot('stockLine', [data], layout, {responsive: true });
 }

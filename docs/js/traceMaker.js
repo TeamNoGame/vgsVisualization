@@ -1,6 +1,6 @@
 function makeTraces() {
   // console.log(vgsData);
-  let rank = [], name = [], platform = [], year = [], genre = [], publisher = ["Activision", "Atari", "Bethesda Softworks", "Electronic Arts", "Microsoft Game Studios", "Nintendo", "Sega", "Sony Computer Entertainment", "SquareSoft", "Take-Two Interactive", "Ubisoft"], NAsales = [], EUsales = [],
+  let rank = [], name = [], platform = [], year = [], genre = [], publisher = ["Activision", "Capcom", "Electronic Arts", "Konami Digital Entertainment", "Microsoft Game Studios", "Namco Bandai Games", "Nintendo", "Sega", "Sony Computer Entertainment", "Take-Two Interactive", "THQ", "Ubisoft"], NAsales = [], EUsales = [],
       JPsales = [], otherSales = [], globalSales = [], allPublishers = [], pubRankings = [];
 // yearly sales (graph1)
   let yearlyNA = [], yearlyEU = [], yearlyJP = [], yearlyOther = [], yearlyGlobal = [];
@@ -70,7 +70,7 @@ function makeTraces() {
 
     // make data for top 11 publishers
     if(publisher.includes(row['Publisher'])){
-      publisherSales[publisher.indexOf(row['Publisher'])][row['Year'] - 1980] += (row['NA_Sales'] + row['EU_Sales'] + row['JP_Sales'] + row['Other_Sales'] + row['Global_Sales'])
+     publisherSales[publisher.indexOf(row['Publisher'])][row['Year'] - 1980] += (row['NA_Sales'] + row['EU_Sales'] + row['JP_Sales'] + row['Other_Sales'] + row['Global_Sales']);
     }
 
     // make arrays for sales by genre by region

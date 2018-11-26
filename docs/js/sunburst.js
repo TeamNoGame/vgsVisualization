@@ -9,7 +9,7 @@ function newSunBurst(objectName) {
   titleDiv.style.paddingBottom = "7px";
   titleDiv.style.textAlign = "center";
   titleDiv.style.fontFamily = "Open Sans, verdana, arial, sans-serif";
-  titleDiv.style.fontSize = "40%";
+  titleDiv.style.fontSize = "30%";
   titleDiv.style.fill = "rgb(68, 68, 68)";
   titleDiv.style.opacity = "1";
   titleDiv.style.fontWeight = "normal";
@@ -115,7 +115,7 @@ function newSunBurst(objectName) {
       .text(d => d.data.name + ':' + formatNumber(d.value))
       .style('fill', 'none')
       .style('stroke', '#fff')
-      .style('stroke-width', 20)
+      .style('stroke-width', 30)
       .style('stroke-linejoin', 'round')
 
   text.append('textPath')

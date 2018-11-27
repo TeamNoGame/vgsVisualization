@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"-->
+  <!--integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="-->
+  <!--crossorigin=""/>-->
+  <!--<link rel="stylesheet" href="css/timeliner.css" type="text/css" media="screen">-->
+
+  <!-- Import leaflet.js javascript API library -->
+  <!--<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"-->
+  <!--integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="-->
+  <!--crossorigin=""></script>-->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- Title -->
+  <title>Video Game Visualization</title>
+</head>
+<style>
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+  }
+
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+  }
+  .col {
+    border: 1px black solid;
+  }
+</style>
+<body onload="startInfoModal()">
+<div>
+  <h1 style="text-align: center" class="display-1">VIDEO GAME SALES HISTORY</h1>
+  <!--<h3 style="text-align: center">Click on the logo to explore!</h3>-->
+  <hr>
+</div>
+<div style="text-align: center;">
+  <div class="row align-items-center" style="margin-left: 1%; margin-right: 1%;">
+    <div class="col">
+      <a id="Activision" name="ATVI" href="dashboard.html">
+        <figure class="figure">
+          <!--https://png2.kisspng.com/sh/2141ac2bbab9bd436d2a84fa95db69fd/L0KzQYm3WMI2N6p6R91yc4Pzfri0jP9od157gdZubz3qcb7sk71ia6Vujtt8aXBxPbPzigp7aaNpRdV4bYDkfsq0gfN1cadui9t4bj24com3hvNkaZZqe6ICND64QYi8WMcxO2I6S6c6N0m8R4mCV8c6NqFzf3==/kisspng-logo-video-games-activision-blizzard-company-activision-5b80fccaeec074.5175870315351799789779.png Transparent ATVI image that messes up vertical orientation-->
+          <img
+               src="https://media3.s-nbcnews.com/j/streams/2013/september/130910/8c8939595-activision-blizzard-80185.nbcnews-ux-1024-900.jpg"
+               class="figure-img img-fluid rounded"
+               alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">ACTIVISION</figcaption>-->
+        </figure>
+      </a>
+    </div>
+    <div class="col">
+      <a id="Capcom" name="CCOEY" href="dashboard.html">
+        <figure class="figure">
+          <img
+              src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Capcom_logo.svg"
+              class="figure-img img-fluid rounded"
+              alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">CAPCOM</figcaption>-->
+        </figure>
+
+      </a>
+    </div>
+    <div class="col">
+      <a id="Electronic Arts" name="EA" href="dashboard.html">
+        <figure class="figure">
+          <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Electronic-Arts-Logo.svg/1200px-Electronic-Arts-Logo.svg.png"
+              class="figure-img img-fluid rounded"
+              alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">ELECTRONIC ARTS</figcaption>-->
+        </figure>
+      </a>
+    </div>
+    <div class="col">
+      <a id="Konami Digital Entertainment" name="KNMCY" href="dashboard.html">
+        <figure class="figure">
+          <img
+               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Konami_4th_logo_2.svg/2000px-Konami_4th_logo_2.svg.png"
+               class="figure-img img-fluid rounded"
+               alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">KONAMI DIGITAL ENTERTAINMENT</figcaption>-->
+        </figure>
+      </a>
+    </div>
+  </div>
+  <div class="row align-items-end" style="margin-left: 1%; margin-right: 1%;">
+    <div class="col">
+      <a id="Microsoft Game Studios" name="MSFT" href="dashboard.html">
+        <figure class="figure">
+          <img
+               src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Microsoft_Studios_logo.svg/1200px-Microsoft_Studios_logo.svg.png"
+               class="figure-img img-fluid rounded"
+               alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">MICROSOFT GAME STUDIOS</figcaption>-->
+        </figure>
+      </a>
+    </div>
+    <div class="col">
+      <a id="Namco Bandai Games" name="NMBD" href="dashboard.html">
+        <figure class="figure">
+          <img
+               src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Bandai_Namco_Entertainment_logo.svg/1200px-Bandai_Namco_Entertainment_logo.svg.png"
+               class="figure-img img-fluid rounded"
+               alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">BANDAI NAMCO GAMES</figcaption>-->
+        </figure>
+      </a>
+    </div>
+    <div class="col">
+      <a id="Nintendo" name="NTDOY" href="dashboard.html">
+        <figure class="figure">
+          <img src="https://cdn.freebiesupply.com/logos/large/2x/nintendo-logo-png-transparent.png"
+               class="figure-img img-fluid rounded"
+               alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">NINTENDO</figcaption>-->
+        </figure>
+      </a>
+    </div>
+    <div class="col">
+      <a id="Sega" name="SEGA" href="dashboard.html">
+        <figure class="figure">
+          <img src="https://cdn.freebiesupply.com/logos/large/2x/sega-logo-png-transparent.png"
+               class="figure-img img-fluid rounded"
+               alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">SEGA</figcaption>-->
+        </figure>
+      </a>
+    </div>
+  </div>
+  <div class="row align-items-end" style="margin-left: 1%; margin-right: 1%;">
+    <div class="col">
+      <a id="Sony Computer Entertainment" name="SNE" href="dashboard.html">
+        <figure class="figure">
+          <img
+               src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Sony_Computer_Entertainment_text_logo.png"
+               class="figure-img img-fluid rounded"
+               alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">SONY COMPUTER ENTERTAINMENT</figcaption>-->
+        </figure>
+      </a>
+    </div>
+    <div class="col">
+      <a id="Take-Two Interactive" name="TTWO" href="dashboard.html">
+        <figure class="figure">
+          <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Take-Two_Interactive_Logo.svg/1086px-Take-Two_Interactive_Logo.svg.png"
+              class="figure-img img-fluid rounded"
+              alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">TAKE-TWO INTERACTIVE</figcaption>-->
+        </figure>
+      </a>
+    </div>
+    <div class="col">
+      <a id="THQ" name="THQN" href="dashboard.html">
+        <figure class="figure">
+          <img
+               src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/THQ_logo.svg/2000px-THQ_logo.svg.png"
+               class="figure-img img-fluid rounded"
+               alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">THQ</figcaption>-->
+        </figure>
+      </a>
+    </div>
+    <div class="col">
+      <a id="Ubisoft" name="UBIPA" href="dashboard.html">
+        <figure class="figure">
+          <img
+              src="https://vignette.wikia.nocookie.net/logopedia/images/a/a0/Ubisoft_2017.svg/revision/latest?cb=20170622035823"
+              class="figure-img img-fluid rounded"
+              alt="A generic square placeholder image with rounded corners in a figure.">
+          <!--<figcaption class="figure-caption">UBISOFT</figcaption>-->
+        </figure>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalTitle">Welcome to our Video Game History Visualization</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Have you ever thought about creating a game or investing in a game?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, always!</button>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger">
+          No, I want to leave!
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<!--<script type="text/javascript" src="js/timeliner.js"></script>-->
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $('a').click(function () {
+    console.log();
+    localStorage.setItem("chosenCompany", this.id);
+    localStorage.setItem("companyAcronym", this.name);
+  });
+  function startInfoModal() {
+    $('#infoModal').modal('toggle')
+  }
+</script>
+</body>
+</html>

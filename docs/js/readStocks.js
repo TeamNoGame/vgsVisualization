@@ -46,7 +46,6 @@ function readStocks(company) {
       case 'UBIPA':
         document.getElementById('summaryText').innerHTML = `Ubisoft generally succeeds with action games. It is their most-sold genre with 146.96M copies sold. They are most popular in North America, which is where 53% of their sales come from. They are best known for the Assasin's Creed and Just Dance series.`;
         break;
-
     }
   });
 }

@@ -111,16 +111,16 @@ function newSunBurst(objectName) {
   // Add white contour
   text.append('textPath')
       .attr('startOffset','50%')
-      .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
+      .attr('xlink:href', (_, i) => `#hiddenArc${i}`)
       .text(d => d.data.name + ':' + formatNumber(d.value))
       .style('fill', 'none')
       .style('stroke', '#fff')
       .style('stroke-width', 30)
-      .style('stroke-linejoin', 'round')
+      .style('stroke-linejoin', 'round');
 
   text.append('textPath')
       .attr('startOffset','50%')
-      .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
+      .attr('xlink:href', (_, i) => `#hiddenArc${i}`)
       .text(d => d.data.name + ':' + formatNumber(d.value));
 
   // d3.json('../docs/data/' + jsonFileName, (error, root) => {

@@ -538,12 +538,9 @@
         }
       }
     }
-    // for (let i = 0; i < vgsData.length; i++) {
-    //   publisher.push(vgsData[i].Publisher);
-    // }
-    // publisher = [... new Set(publisher)];
-    // publisher = publisher.sort();
-    // console.log(publisher.includes('Namco Bandai Games'));
+    for (let i = 0; i < genreRegionSales.length; i++) {
+      console.log(genreRegionSales[i].name);
+    }
     newSunBurst(genreRegionSales);
   }
 </script>

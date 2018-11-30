@@ -18,6 +18,9 @@ function showHistory(name, csv){
 
   const layout = {
     title: `${name} Stock History`,
+    yaxis: {
+      title: 'Close Values',
+    }
   };
 
   Plotly.newPlot('stockLine', [data], layout, {responsive: true });

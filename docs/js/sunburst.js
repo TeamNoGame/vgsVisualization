@@ -2,14 +2,14 @@ function newSunBurst(objectName) {
   var showGraphs = document.getElementById('gameDashboard');
   var graphDiv = document.createElement('div');
   var titleDiv = document.createElement('div');
-  var sunBurstTitle = document.createElement('h1');
-  var content = document.createTextNode('Sales by Genre/Region');
+  var sunBurstTitle = document.createElement('h2');
+  var content = document.createTextNode('Sales by Genre/Region in Millions');
   var root = objectName;
 
   titleDiv.style.paddingBottom = "7px";
   titleDiv.style.textAlign = "center";
   titleDiv.style.fontFamily = "Open Sans, verdana, arial, sans-serif";
-  titleDiv.style.fontSize = "20%";
+  titleDiv.style.fontSize = "15%";
   titleDiv.style.fill = "rgb(68, 68, 68)";
   titleDiv.style.opacity = "1";
   titleDiv.style.fontWeight = "normal";

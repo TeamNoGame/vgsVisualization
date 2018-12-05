@@ -98,12 +98,6 @@
           </div>
         </div>
       </div>
-      <!--<div class="row" style="background: white; margin-top: 2%; margin-bottom: 1%;">-->
-        <!--<div id="gameSales"></div>-->
-      <!--</div>-->
-      <!--<div class="row" style="background: white; margin-top: 2%;">-->
-        <!--<div id="stockLine" style="margin-bottom: 5%"></div>-->
-      <!--</div>-->
     </div>
     <div class="col-sm">
       <div class="row" style="background: white; margin-left: 1%; margin-top: 2%; display: block; text-align: center;">
@@ -167,7 +161,32 @@
       'THQ',
       'Ubisoft'
     ];
-    var topCompanies = [];
+    var topCompanySales = [
+      {
+        x: [],
+        y: [],
+        name: 'JP_Sales',
+        type: 'bar',
+      },
+      {
+        x: [],
+        y: [],
+        name: 'EU_Sales',
+        type: 'bar',
+      },
+      {
+        x: [],
+        y: [],
+        name: 'NA_Sales',
+        type: 'bar',
+      },
+      {
+        x: [],
+        y: [],
+        name: 'Other_Sales',
+        type: 'bar',
+      },
+    ];
     var yearData = [];
     var startYear = 1980;
     var allYears = [];
@@ -352,10 +371,102 @@
         }
       }
     }
+
     for (let i = 0; i < genreRegionSales.length; i++) {
       console.log(genreRegionSales[i].name);
     }
+
     newSunBurst(genreRegionSales);
+
+    console.log(topCompanySales);
+    for(let i = 0; i < topCompanySales.length; i++) {
+      topCompanySales[i].x = topCompanyNames;
+      topCompanySales[i].y = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    }
+    for (let i = 0; i < vgsData.length; i++) {
+      if (vgsData[i].Publisher == 'Activision') {
+        topCompanySales[0].y[0] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[0] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[0] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[0] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Capcom') {
+        topCompanySales[0].y[1] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[1] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[1] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[1] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Electronic Arts') {
+        topCompanySales[0].y[2] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[2] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[2] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[2] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Konami Digital Entertainment') {
+        topCompanySales[0].y[3] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[3] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[3] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[3] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Microsoft Game Studios') {
+        topCompanySales[0].y[4] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[4] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[4] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[4] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Namco Bandai Games') {
+        topCompanySales[0].y[5] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[5] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[5] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[5] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Nintendo') {
+        topCompanySales[0].y[6] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[6] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[6] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[6] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Sega') {
+        topCompanySales[0].y[7] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[7] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[7] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[7] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Sony Computer Entertainment') {
+        topCompanySales[0].y[8] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[8] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[8] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[8] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Take-Two Interactive') {
+        topCompanySales[0].y[9] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[9] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[9] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[9] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'THQ') {
+        topCompanySales[0].y[10] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[10] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[10] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[10] += vgsData[i].Other_Sales;
+      }
+      if (vgsData[i].Publisher == 'Ubisoft') {
+        topCompanySales[0].y[11] += vgsData[i].JP_Sales;
+        topCompanySales[1].y[11] += vgsData[i].EU_Sales;
+        topCompanySales[2].y[11] += vgsData[i].NA_Sales;
+        topCompanySales[3].y[11] += vgsData[i].Other_Sales;
+      }
+    }
+    Plotly.newPlot('gameSalesComp', topCompanySales, {
+      barmode: 'stack',
+      title: 'Copies Sold in Millions from 1980 to 2016',
+      xaxis: {
+        title: 'Companies',
+      },
+      yaxis: {
+        title: 'Copies Sold in Millions',
+      },
+    }, {barmode: 'stack', responsive: true});
   }
 </script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

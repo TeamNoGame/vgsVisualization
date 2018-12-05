@@ -31,8 +31,8 @@ function showHistory(name, csv){
     function graph2() {
       var graphId = setInterval(addToStock, 0.1);
       function addToStock() {
-        console.log(start);
-        console.log(csv.dates.length);
+        // console.log(start);
+        // console.log(csv.dates.length);
         if (start > (csv.dates.length - 1)) {
           layout.title = `${name} Stock History from ${csv.dates[0]} to ${csv.dates[csv.dates.length - 2]}`;
           data.x.push(csv.dates[csv.dates.length - 2]);

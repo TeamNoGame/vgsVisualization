@@ -12,6 +12,7 @@ function getRows(company) {
 function showHistory(name, csv){
   if (name !== 'NMBD' && csv.dates.length > 1000) {
     var start = 0;
+    var graphElem = document.getElementById('stockLine');
     var data = {
       x: [],
       y: [],
@@ -21,11 +22,13 @@ function showHistory(name, csv){
     const layout = {
       title: `${name} Stock History`,
       yaxis: {
-        title: 'USD (Close Values)',
+        title: 'Close Value',
       }
     };
+
+    Plotly.newPlot(graphElem, [data], layout, { responsive: true });
+
     function graph2() {
-      var graphElem = document.getElementById('stockLine');
       var graphId = setInterval(addToStock, 0.1);
       function addToStock() {
         console.log(start);
@@ -55,23 +58,5 @@ function showHistory(name, csv){
     var noStockTitle = document.createTextNode('Oops! No Stock Information Available!');
     noStockHeader.appendChild(noStockTitle);
     stockDiv.append(noStockHeader);
-    // var showGraphs = document.getElementById('gameDashboard');
-    //   var graphDiv = document.createElement('div');
-    //   var titleDiv = document.createElement('div');
-    //   var sunBurstTitle = document.createElement('h2');
-    //   var content = document.createTextNode('Sales by Genre/Region in Millions');
-    //   var root = objectName;
-    //
-    //   titleDiv.style.paddingBottom = "7px";
-    //   titleDiv.style.textAlign = "center";
-    //   titleDiv.style.fontFamily = "Open Sans, verdana, arial, sans-serif";
-    //   titleDiv.style.fontSize = "15%";
-    //   titleDiv.style.fill = "rgb(68, 68, 68)";
-    //   titleDiv.style.opacity = "1";
-    //   titleDiv.style.fontWeight = "normal";
-    //   titleDiv.style.whiteSpace = "pre";
-    //
-    //   titleDiv.append(content);
-    //   graphDiv.appendChild(titleDiv);
   }
 }

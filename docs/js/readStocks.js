@@ -10,44 +10,44 @@ function readStocks(company) {
       companyStockData = dataCleaning(companyStockData);
       companyStockData = getRows(companyStockData);
       showHistory(company, companyStockData);
-      // switch(company){
-      //   case 'ATVI':
-      //     document.getElementById('summaryText').innerHTML = `Activision generally succeeds with shooter games. It is their most-sold genre with 299.78M copies sold. They are most popular in North America, where 29% of their sales come from. They are best known for the Call of Duty series.`;
-      //     break;
-      //   case 'CCOEY':
-      //     document.getElementById('summaryText').innerHTML = `Capcom generally succeeds with action games. It is their most-sold genre with 85.11M copies sold. They are most popular in North America and Japan, which make of 20% and 17% of their sales respectively. They are well-known for the Street Fighter and Monster Hunter series, the latter of which is massively popular in Japan.`;
-      //     break;
-      //   case 'EA':
-      //     document.getElementById('summaryText').innerHTML = `EA generally succeeds with sports games. It is their most-sold genre with 479.52M copies sold. They are most popular in North America, which is where a whopping 53% of their sales comes from. They are best known for the FIFA and Star Wars Battlefront series.`;
-      //     break;
-      //   case 'KNMCY':
-      //     document.getElementById('summaryText').innerHTML = `Konami generally succeeds with sports and action games. Those are their most-sold genre with 98.95M and 71.21M copies sold, respectively. They are most popular in NA, which makes up 32.6% of their sales, but Japan is not far behind with 32.2% of their sales. They are best known for the Metal Gear Solid Series, but the World Soccer series is also very popular in Japan.`;
-      //     break;
-      //   case 'MSFT':
-      //     document.getElementById('summaryText').innerHTML = `Microsoft generally succeeds with shooter games. It is their most-sold genre with 95.44 copies sold. They are most popular in North America, where an amazing 63% of their copies are sold. They are most known for the Halo series and also notably bought Minecraft in 2014.`;
-      //     break;
-      //   case 'NMBD':
-      //     document.getElementById('summaryText').innerHTML = `Bandai Namco generally succeeds with fighting and role-playing games. These are their most-sold genres with 61.26M and 53.79M copies sold respectively. They are most popular in Japan, which is where 50% of their sales come from. They are best known for the Tekken and Dark Souls series.`;
-      //     break;
-      //   case 'NTDOY':
-      //     document.getElementById('summaryText').innerHTML = `Nintendo generally succeeds with platforming games. They have sold a total of 1786.36M copies of all of their games as of the collection of this data. They are most popular in North America, where 45% of their sales are made. They are well-known for the Mario and Pokemon franchises.`;
-      //     break;
-      //   case 'SEGA':
-      //     document.getElementById('summaryText').innerHTML = `SEGA generally succeeds with sports games. It is their most-sold genre with 71.68M copies sold. They are most popular in North America, with Europe not far behind. Thy are best known for the Sonic franchise.`;
-      //     break;
-      //   case 'SNE':
-      //     document.getElementById('summaryText').innerHTML = `Sony generally succeeds with racing games. It is their most-sold genre with 110.56M copies sold. They are most popular in North America, which is where 43% of tbeir sales come from. They are best known for the Gran Turismo and Final Fantasy series.`;
-      //     break;
-      //   case 'THQN':
-      //     document.getElementById('summaryText').innerHTML = `THQ generally succeeds with action games. It is their most-sold genre with 88.99M copies sold. They are most popular in North America, where 55% of their sales come from. They are best known for the WWF and WWE series.`;
-      //     break;
-      //   case 'TTWO':
-      //     document.getElementById('summaryText').innerHTML = `Take-two generally succeeds with action games. It is their most-sold genre with 211.11M copies sold. They are most popular in North America. Their second-most popular region is Europe, which makes up only half of the sales in comparison to North America. They are best known for the Grand Theft Auto series.`;
-      //     break;
-      //   case 'UBIPA':
-      //     document.getElementById('summaryText').innerHTML = `Ubisoft generally succeeds with action games. It is their most-sold genre with 146.96M copies sold. They are most popular in North America, which is where 53% of their sales come from. They are best known for the Assasin's Creed and Just Dance series.`;
-      //     break;
-      // }
+      switch(company){
+        case 'ATVI':
+          document.getElementById('summaryText').innerHTML = `Activision generally succeeds with shooter games. It is their most-sold genre with 299.78M copies sold. They are most popular in North America, where 29% of their sales come from. They are best known for the Call of Duty series.`;
+          break;
+        case 'CCOEY':
+          document.getElementById('summaryText').innerHTML = `Capcom generally succeeds with action games. It is their most-sold genre with 85.11M copies sold. They are most popular in North America and Japan, which make of 20% and 17% of their sales respectively. They are well-known for the Street Fighter and Monster Hunter series, the latter of which is massively popular in Japan.`;
+          break;
+        case 'EA':
+          document.getElementById('summaryText').innerHTML = `EA generally succeeds with sports games. It is their most-sold genre with 479.52M copies sold. They are most popular in North America, which is where a whopping 53% of their sales comes from. They are best known for the FIFA and Star Wars Battlefront series.`;
+          break;
+        case 'KNMCY':
+          document.getElementById('summaryText').innerHTML = `Konami generally succeeds with sports and action games. Those are their most-sold genre with 98.95M and 71.21M copies sold, respectively. They are most popular in NA, which makes up 32.6% of their sales, but Japan is not far behind with 32.2% of their sales. They are best known for the Metal Gear Solid Series, but the World Soccer series is also very popular in Japan.`;
+          break;
+        case 'MSFT':
+          document.getElementById('summaryText').innerHTML = `Microsoft generally succeeds with shooter games. It is their most-sold genre with 95.44 copies sold. They are most popular in North America, where an amazing 63% of their copies are sold. They are most known for the Halo series and also notably bought Minecraft in 2014.`;
+          break;
+        case 'NMBD':
+          document.getElementById('summaryText').innerHTML = `Bandai Namco generally succeeds with fighting and role-playing games. These are their most-sold genres with 61.26M and 53.79M copies sold respectively. They are most popular in Japan, which is where 50% of their sales come from. They are best known for the Tekken and Dark Souls series.`;
+          break;
+        case 'NTDOY':
+          document.getElementById('summaryText').innerHTML = `Nintendo generally succeeds with platforming games. They have sold a total of 1786.36M copies of all of their games as of the collection of this data. They are most popular in North America, where 45% of their sales are made. They are well-known for the Mario and Pokemon franchises.`;
+          break;
+        case 'SEGA':
+          document.getElementById('summaryText').innerHTML = `SEGA generally succeeds with sports games. It is their most-sold genre with 71.68M copies sold. They are most popular in North America, with Europe not far behind. Thy are best known for the Sonic franchise.`;
+          break;
+        case 'SNE':
+          document.getElementById('summaryText').innerHTML = `Sony generally succeeds with racing games. It is their most-sold genre with 110.56M copies sold. They are most popular in North America, which is where 43% of tbeir sales come from. They are best known for the Gran Turismo and Final Fantasy series.`;
+          break;
+        case 'THQN':
+          document.getElementById('summaryText').innerHTML = `THQ generally succeeds with action games. It is their most-sold genre with 88.99M copies sold. They are most popular in North America, where 55% of their sales come from. They are best known for the WWF and WWE series.`;
+          break;
+        case 'TTWO':
+          document.getElementById('summaryText').innerHTML = `Take-two generally succeeds with action games. It is their most-sold genre with 211.11M copies sold. They are most popular in North America. Their second-most popular region is Europe, which makes up only half of the sales in comparison to North America. They are best known for the Grand Theft Auto series.`;
+          break;
+        case 'UBIPA':
+          document.getElementById('summaryText').innerHTML = `Ubisoft generally succeeds with action games. It is their most-sold genre with 146.96M copies sold. They are most popular in North America, which is where 53% of their sales come from. They are best known for the Assasin's Creed and Just Dance series.`;
+          break;
+      }
     });
   } else {
     showHistory(company, companyStockData);

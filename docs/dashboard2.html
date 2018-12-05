@@ -43,44 +43,74 @@
   @media (min-width: 1200px) {
   }
 </style>
-
+<!--<div class="flip-card">-->
+  <!--<div class="flip-card-inner">-->
+    <!--<div class="flip-card-front">-->
+    <!--</div>-->
+    <!--<div class="flip-card-back">-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 <body onload="readFiles();" style="background-color: #E8F2F2; width: 98vw">
 <div class="fluid-container" style="margin-left: 2%; margin-top: 1%; margin-bottom: 1%;">
   <div id="titleRow" class="row" style="background-color: white; display: block; text-align: center;">
-    <h1 id="vgdashtitle" class="display-1" style="margin: 0; padding-bottom: 1%;">Company Name</h1>
+    <h1 id="vgdashtitle" class="display-1" style="margin: 0; padding-bottom: 1%; color: #152329">Company Name</h1>
+  </div>
+  <div class="row" style="background: white; margin-top: 1%; display: block; text-align: center">
+    <blockquote class="blockquote text-center" style="margin-bottom: 0; padding-top: 1%; padding-bottom: 1%;">
+      <p id="summaryText" class="mb-0"></p>
+      <footer class="blockquote-footer">From, <cite title="Source Title">Your Data</cite></footer>
+    </blockquote>
   </div>
   <div class="row">
-    <div class="col-sm" style="margin-top: 1%; margin-right: 1%;">
-      <div class="row" style="background: white; margin-bottom: 1%; ">
-        <div id="gameSales"></div>
-      </div>
-      <div class="row" style="background: white; margin-top: 2%; ">
-        <div id="stockLine" style="margin-bottom: 5%"></div>
-      </div>
-    </div>
-    <div class="flip-card col-sm" style="padding-right: 0;">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <h1>Activision</h1>
-        </div>
-        <div class="flip-card-back">
-          <p>Architect & Engineer</p>
-          <p>We love that guy</p>
+    <div class="col-sm">
+      <div class="row" style="margin-top: 2%">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 100%" onchange="flip()">
+          <label class="btn btn-secondary active" style="width: 100%">
+            <input id="companyRadio" type="radio" name="options" id="option1" autocomplete="off" checked> Company
+          </label>
+          <label class="btn btn-secondary" style="width: 100%">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Compare
+          </label>
         </div>
       </div>
-    </div>
-    <!--<div id="topGames" class="col-sm flip-card" ">-->
-      <!--<div class="flip-card" style="width: 100%; height: 100%">-->
-        <!--<div class="flip-card-inner">-->
-          <!--<div class="flip-card-front">-->
-
-          <!--</div>-->
-          <!--<div class="flip-card-back">-->
-
-          <!--</div>-->
-        <!--</div>-->
+      <div class="row" style="margin-top: 2%">
+        <div class="flip-card">
+          <div id="flipCard" class="flip-card-inner">
+            <div class="flip-card-front">
+              <div id="gameSales"></div>
+            </div>
+            <div class="flip-card-back">
+              <div>HELLO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 2%">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div id="stockLine"></div>
+            </div>
+            <div class="flip-card-back">
+              <h1>BYE</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="row" style="background: white; margin-top: 2%; margin-bottom: 1%;">-->
+        <!--<div id="gameSales"></div>-->
       <!--</div>-->
-    <!--</div>-->
+      <!--<div class="row" style="background: white; margin-top: 2%;">-->
+        <!--<div id="stockLine" style="margin-bottom: 5%"></div>-->
+      <!--</div>-->
+    </div>
+    <div class="col-sm">
+      <div class="row" style="background: white; margin-left: 1%; margin-top: 2%; display: block; text-align: center;">
+        hi
+      </div>
+      <div class="row" id="gameDashboard" style="margin-left: 1%; margin-top: 2%; background: white; display: block; text-align: center"></div>
+    </div>
   </div>
 </div>
 <!-- carousel -->
@@ -93,6 +123,13 @@
 <script src="js/drawStocks.js"></script>
 
 <script type="text/javascript">
+  function flip() {
+    if(document.getElementById('option1').checked) {
+      document.getElementById("flipCard").style.transform = "none";
+    } else if(document.getElementById('option2').checked) {
+      document.getElementById("flipCard").style.transform = "rotateY(180deg)";
+    }
+  }
   function doneLoadingData() {
     // This is to get the value that was passed!
     // console.log(localStorage.getItem("chosenCompany"));
@@ -183,7 +220,6 @@
     let thqSum = 0;
     let ubiSum = 0;
 
-    // I Left off here! 4:12 PM 11/29/2018 <--
     while(startYear != 2017) {
       for (let i = 0; i < topCompanyNames.length; i++) {
         companySalesData[i].x.push(startYear);
@@ -200,7 +236,6 @@
     startYear = 1980;
     Plotly.newPlot('gameSales', yearSalesData, { barmode: 'stack' });
     function graph() {
-      var graphElement = document.getElementById('myDiv');
       var id = setInterval(addToGraph, 125);
       function addToGraph() {
         if (startYear == 2017) {
@@ -241,71 +276,69 @@
             },
             yaxis: {
               title: 'Copies Sold in Millions',
-            }
+            },
           }, {responsive: true});
           startYear++;
         }
       }
     }
     graph();
-    // var genres = [];
-    // var regions = ['Other_Sales', 'EU_Sales', 'NA_Sales', 'JP_Sales'];
-    // var genreSales = [];
-    // var regionSales = [];
-    // var publisher = [];
-    // var genreRegionSales = {
-    //   name: localStorage.getItem("chosenCompany"),
-    //   children: []
-    // };
-    //
-    // for (let i = 0; i < vgsData.length; i++) {
-    //   genres.push(vgsData[i].Genre);
-    // }
-    // genres = [... new Set(genres)];
-    // genres.pop();
-    // // console.log(vgsData);
-    // // console.log(genres);
-    // for (let i = 0; i < genres.length; i++) {
-    //   genreRegionSales.children.push({
-    //     name: genres[i],
-    //     children: [
-    //       {
-    //         name: 'NA',
-    //         size: 0
-    //       },
-    //       {
-    //         name: 'JP',
-    //         size: 0
-    //       },
-    //       {
-    //         name: 'EU',
-    //         size: 0
-    //       },
-    //       {
-    //         name: 'OTH',
-    //         size: 0
-    //       }
-    //     ]
-    //   });
-    // }
-    // for (let i = 0; i < vgsData.length; i++) {
-    //   for (let j = 0; j < genreRegionSales.children.length; j++) {
-    //     if (vgsData[i].Genre == genreRegionSales.children[j].name && vgsData[i].Publisher == localStorage.getItem("chosenCompany")) {
-    //       genreRegionSales.children[j].children[0].size += parseFloat(vgsData[i].NA_Sales);
-    //       genreRegionSales.children[j].children[1].size += parseFloat(vgsData[i].JP_Sales);
-    //       genreRegionSales.children[j].children[2].size += parseFloat(vgsData[i].EU_Sales);
-    //       genreRegionSales.children[j].children[3].size += parseFloat(vgsData[i].Other_Sales);
-    //     }
-    //   }
-    // }
-    // for (let i = 0; i < genreRegionSales.length; i++) {
-    //   console.log(genreRegionSales[i].name);
-    // }
-    // newSunBurst(genreRegionSales);
-  }
-</script>
 
-<script>
+    var genres = [];
+    var regions = ['Other_Sales', 'EU_Sales', 'NA_Sales', 'JP_Sales'];
+    var genreSales = [];
+    var regionSales = [];
+    var publisher = [];
+    var genreRegionSales = {
+      name: localStorage.getItem("chosenCompany"),
+      children: []
+    };
+
+    for (let i = 0; i < vgsData.length; i++) {
+      genres.push(vgsData[i].Genre);
+    }
+    genres = [... new Set(genres)];
+    genres.pop();
+    // console.log(vgsData);
+    // console.log(genres);
+    for (let i = 0; i < genres.length; i++) {
+      genreRegionSales.children.push({
+        name: genres[i],
+        children: [
+          {
+            name: 'NA',
+            size: 0
+          },
+          {
+            name: 'JP',
+            size: 0
+          },
+          {
+            name: 'EU',
+            size: 0
+          },
+          {
+            name: 'OTH',
+            size: 0
+          }
+        ]
+      });
+    }
+    for (let i = 0; i < vgsData.length; i++) {
+      for (let j = 0; j < genreRegionSales.children.length; j++) {
+        if (vgsData[i].Genre == genreRegionSales.children[j].name && vgsData[i].Publisher == localStorage.getItem("chosenCompany")) {
+          genreRegionSales.children[j].children[0].size += parseFloat(vgsData[i].NA_Sales);
+          genreRegionSales.children[j].children[1].size += parseFloat(vgsData[i].JP_Sales);
+          genreRegionSales.children[j].children[2].size += parseFloat(vgsData[i].EU_Sales);
+          genreRegionSales.children[j].children[3].size += parseFloat(vgsData[i].Other_Sales);
+        }
+      }
+    }
+    for (let i = 0; i < genreRegionSales.length; i++) {
+      console.log(genreRegionSales[i].name);
+    }
+    newSunBurst(genreRegionSales);
+  }
 </script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script

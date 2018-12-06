@@ -54,7 +54,7 @@ function showHistory(name, csv){
     stockDiv.style.textAlign = 'center';
     stockDiv.style.minHeight = '150px';
     var noStockHeader = document.createElement('h2');
-    noStockHeader.style.marginTop = '10%';
+    noStockHeader.style.marginTop = '30%';
     var noStockTitle = document.createTextNode('Oops! No Stock Information Available!');
     noStockHeader.appendChild(noStockTitle);
     stockDiv.append(noStockHeader);

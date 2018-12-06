@@ -102,7 +102,8 @@
     <div class="col-sm">
       <div class="row" style="background: white; margin-left: 1%; margin-top: 2%; display: block; text-align: center;">
         <div class="row">
-          <div class="col-4">
+          <div class="col-12"><h2>Top 5 Games</h2></div>
+          <div class="col-6">
             <div class="list-group" id="list-tab" role="tablist">
               <a class="list-group-item list-group-item-action active" id="list-rank1-list" data-toggle="list" href="#list-rank1" role="tab" aria-controls="rank1">Rank 1</a>
               <a class="list-group-item list-group-item-action" id="list-rank2-list" data-toggle="list" href="#list-rank2" role="tab" aria-controls="rank2">Rank 2</a>
@@ -111,7 +112,7 @@
               <a class="list-group-item list-group-item-action" id="list-rank5-list" data-toggle="list" href="#list-rank5" role="tab" aria-controls="rank5">Rank 5</a>
             </div>
           </div>
-          <div class="col-8">
+          <div class="col-6">
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="list-rank1" role="tabpanel" aria-labelledby="list-rank1-list">Rank 1 Data</div>
               <div class="tab-pane fade" id="list-rank2" role="tabpanel" aria-labelledby="list-rank2-list">Rank 2 Data</div>
@@ -143,6 +144,7 @@
     }
   }
   function doneLoadingData() {
+    readStocks(localStorage.getItem('companyAcronym'));
     // This is to get the value that was passed!
     // console.log(localStorage.getItem("chosenCompany"));
     console.log(vgsData);

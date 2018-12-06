@@ -147,7 +147,6 @@
     }
   }
   function doneLoadingData() {
-    readStocks(localStorage.getItem('companyAcronym'));
     console.log(vgsData);
     var companyData = [];
     var topCompanyNames = [
@@ -476,6 +475,7 @@
       setTimeout(function(){
         document.getElementById('sumRow').style.visibility = 'visible';
         document.getElementById('sumRow').classList.add('slideRight');
+        readStocks(localStorage.getItem('companyAcronym'));
       },500);
       setTimeout(function(){
         document.getElementById('buttonRow').style.visibility = 'visible';

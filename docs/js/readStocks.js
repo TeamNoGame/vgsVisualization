@@ -9,7 +9,9 @@ function readStocks(company) {
     }).done(function () {
       companyStockData = dataCleaning(companyStockData);
       companyStockData = getRows(companyStockData);
-      showHistory(company, companyStockData);
+      setTimeout(function(){
+        showHistory(company, companyStockData);
+      },2700);
       let topFive;
       switch(company){
         case 'ATVI':

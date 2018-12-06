@@ -18,7 +18,6 @@ function readFiles() {
     }
     doneLoadingData();
   });
-  readStocks(localStorage.getItem('companyAcronym'));
 }
 
 function dataCleaning(dirtyData) {

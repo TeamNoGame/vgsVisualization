@@ -53,18 +53,18 @@
 <!--</div>-->
 <body onload="readFiles();" style="background-color: #E8F2F2; width: 98vw">
 <div class="fluid-container" style="margin-left: 2%; margin-top: 1%; margin-bottom: 1%;">
-  <div id="titleRow" class="row" style="background-color: white; display: block; text-align: center;">
+  <div id="titleRow" class="row" style="visibility: hidden; background-color: white; display: block; text-align: center;">
     <h1 id="vgdashtitle" class="display-1" style="margin: 0; padding-bottom: 1%; color: #152329">Company Name</h1>
   </div>
-  <div class="row" style="background: white; margin-top: 1%; display: block; text-align: center">
+  <div id="sumRow" class="row" style="visibility: hidden; background: white; margin-top: 1%; display: block; text-align: center">
     <blockquote class="blockquote text-center" style="margin-bottom: 0; padding-top: 1%; padding-bottom: 1%;">
       <p id="summaryText" class="mb-0"></p>
-      <footer class="blockquote-footer">From, <cite title="Source Title">Your Data</cite></footer>
+      <footer class="blockquote-footer">From, <cite title="Source Title">The Data</cite></footer>
     </blockquote>
   </div>
   <div class="row">
     <div class="col-sm">
-      <div class="row" style="margin-top: 2%">
+      <div id="buttonRow" class="row" style="margin-top: 2%; visibility: hidden;">
         <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 100%" onchange="flip()">
           <label class="btn btn-secondary active" style="width: 100%">
             <input type="radio" name="options" id="option1" autocomplete="off" checked> Company
@@ -74,7 +74,7 @@
           </label>
         </div>
       </div>
-      <div class="row" style="margin-top: 2%">
+      <div id='flipRow' class="row" style="background: white; margin-top: 2%; visibility: hidden; ">
         <div class="flip-card">
           <div id="flipCard" class="flip-card-inner">
             <div class="flip-card-front">
@@ -86,7 +86,7 @@
           </div>
         </div>
       </div>
-      <div class="row" style="margin-top: 2%">
+      <div id='stockRow' class="row" style="background: white; margin-top: 2%; visibility: hidden; ">
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -125,14 +125,15 @@
   function flip() {
     if(document.getElementById('option1').checked) {
       document.getElementById("flipCard").style.transform = "none";
+      document.getElementById('gameSalesComp').style.display = 'none';
+      document.getElementById('gameSales').style.display = 'block';
     } else if(document.getElementById('option2').checked) {
       document.getElementById("flipCard").style.transform = "rotateY(180deg)";
+      document.getElementById('gameSales').style.display = 'none';
+      document.getElementById('gameSalesComp').style.display = 'block';
     }
   }
   function doneLoadingData() {
-    readStocks(localStorage.getItem('companyAcronym'));
-    // This is to get the value that was passed!
-    // console.log(localStorage.getItem("chosenCompany"));
     console.log(vgsData);
     var companyData = [];
     var topCompanyNames = [
@@ -307,7 +308,6 @@
         }
       }
     }
-    graph();
 
     var genres = [];
     var regions = ['Other_Sales', 'EU_Sales', 'NA_Sales', 'JP_Sales'];
@@ -363,8 +363,6 @@
     for (let i = 0; i < genreRegionSales.length; i++) {
       console.log(genreRegionSales[i].name);
     }
-
-    newSunBurst(genreRegionSales);
 
     console.log(topCompanySales);
     for(let i = 0; i < topCompanySales.length; i++) {
@@ -445,6 +443,7 @@
         topCompanySales[3].y[11] += vgsData[i].Other_Sales;
       }
     }
+    // for (let i = 0; i < )
     Plotly.newPlot('gameSalesComp', topCompanySales, {
       barmode: 'stack',
       title: 'Copies Sold in Millions from 1980 to 2016',
@@ -455,6 +454,40 @@
         title: 'Copies Sold in Millions',
       },
     }, {barmode: 'stack', responsive: true});
+    function loadAllElements() {
+      setTimeout(function(){
+        document.getElementById('titleRow').style.visibility = 'visible';
+        document.getElementById('titleRow').classList.add('slideDown');
+      },100);
+      setTimeout(function(){
+        document.getElementById('sumRow').style.visibility = 'visible';
+        document.getElementById('sumRow').classList.add('slideRight');
+        readStocks(localStorage.getItem('companyAcronym'));
+      },500);
+      setTimeout(function(){
+        document.getElementById('buttonRow').style.visibility = 'visible';
+        document.getElementById('buttonRow').classList.add('slideRight');
+      },900);
+      setTimeout(function(){
+        document.getElementById('gamesRow').style.visibility = 'visible';
+        document.getElementById('gamesRow').classList.add('slideLeft');
+      },1300);
+      setTimeout(function(){
+        document.getElementById('flipRow').style.visibility = 'visible';
+        document.getElementById('flipRow').classList.add('slideRight');
+        graph();
+      },1700);
+      setTimeout(function(){
+        document.getElementById('gameDashboard').style.visibility = 'visible';
+        document.getElementById('gameDashboard').classList.add('slideLeft');
+        newSunBurst(genreRegionSales);
+      },2100);
+      setTimeout(function(){
+        document.getElementById('stockRow').style.visibility = 'visible';
+        document.getElementById('stockRow').classList.add('slideRight');
+      },2500);
+    }
+    loadAllElements();
   }
 </script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

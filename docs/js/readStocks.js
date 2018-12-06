@@ -9,7 +9,9 @@ function readStocks(company) {
     }).done(function () {
       companyStockData = dataCleaning(companyStockData);
       companyStockData = getRows(companyStockData);
-      showHistory(company, companyStockData);
+      setTimeout(function(){
+        showHistory(company, companyStockData);
+      },2700);
       let topFive, values, data;
       switch(company){
         case 'ATVI':
@@ -293,6 +295,7 @@ function readStocks(company) {
       }
     });
   } else {
+    document.getElementById('summaryText').innerHTML = `Bandai Namco generally succeeds with fighting and role-playing games. These are their most-sold genres with 61.26M and 53.79M copies sold respectively. They are most popular in Japan, which is where 50% of their sales come from. They are best known for the Tekken and Dark Souls series.`;
     showHistory(company, companyStockData);
   }
 }

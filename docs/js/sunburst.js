@@ -8,9 +8,9 @@ function newSunBurst(objectName) {
 
   titleDiv.style.paddingBottom = "7px";
   titleDiv.style.textAlign = "center";
-  titleDiv.style.fontFamily = "Open Sans, verdana, arial, sans-serif";
-  titleDiv.style.fontSize = "15%";
-  titleDiv.style.fill = "rgb(68, 68, 68)";
+  titleDiv.style.fontFamily = "arial, sans-serif";
+  titleDiv.style.fontSize = "9%";
+  titleDiv.style.fill = "gray";
   titleDiv.style.opacity = "1";
   titleDiv.style.fontWeight = "normal";
   titleDiv.style.whiteSpace = "pre";
